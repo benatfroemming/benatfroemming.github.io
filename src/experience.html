@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/styles2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Experience</title>
+</head>
+<body>
+    <header>
+        <div class="banner">
+            <img src="/img/library.jpg" alt="Banner Image">
+        </div>
+    </header>
+    <div class="back-button">
+        <a href="/index.html" class="btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </div>
+    <div class="scroll-button">
+        <button class="scroll-top-btn"><i class="fas fa-arrow-up"></i></button>
+    </div>
+    <div class="content">
+        <div class="title">Experience</div>
+        <br></br>
+            <strong>Coding Bootcamp | Program Chair and Lecturer, Spain, July 2023</strong>
+            <ul>
+                <li>Collaborated with the Idiazabal town hall to organize a Coding Bootcamp in mastering the basics of programming with Python and web development for students under 15.</li>
+                <li>Led comprehensive lectures and created course notes to teach abstract algorithmic concepts and keep students engaged.</li>
+            </ul>
+            <img src="/img/bootcamp.jpg" alt="Banner Image">
+            <strong>Electrical and Computer Engineering Department | Administrative Assistant, Minnesota, 2021 September - Present</strong>
+            <ul>
+                <li>Coordinating the department properly by helping students and professors with scheduling, advising, finances, and IT support with a high level of time management communication, data management, and organization skills.</li>
+            </ul>
+            <br></br>
+            <strong>Golf Course | Landscape worker, Minnesota, 2021</strong>
+            <ul>
+                <li>Implemented a new startup idea from California to raise sprinklers and share its effectiveness with the creators.</li>
+            </ul>
+            <br></br>
+            <strong>Aqua Center | Lifeguard, Minnesota, 2021</strong>
+            <ul>
+                <li>Guarded the pool and assisted swimmers with necessary help including CPR and First Aid.</li>
+            </ul>
+            <br></br>
+            <strong>Organic Farm | Volunteer, Italy, June 2023</strong>
+            <ul>
+                <li>Improved their sprinkler system with environmentally friendly processes and habits.</li>
+                <li>Exchanged culture and language.</li>
+            </ul>
+            <img src="/img/italy.jpg">
+        <br></br>
+    </div>  
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const scrollTopBtn = document.querySelector(".scroll-button");
+
+            // Set initial state on window load
+            window.addEventListener("load", function () {
+                scrollTopBtn.style.opacity = 0;
+            });
+
+            scrollTopBtn.addEventListener("click", function () {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            });
+
+            window.addEventListener("scroll", function () {
+                if (window.scrollY < 300) {
+                    scrollTopBtn.style.opacity = 0;
+                } else {
+                    scrollTopBtn.style.opacity = 1;
+                }
+            });
+        });
+
+
+    </script>  
+</body>
+</html>

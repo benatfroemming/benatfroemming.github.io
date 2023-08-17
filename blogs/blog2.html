@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/styles2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Blog 1</title>
+</head>
+<body>
+    <header>
+        <div class="banner">
+            <img src="/img/youth2.png" alt="Banner Image">
+        </div>
+    </header>
+    <div class="back-button">
+        <a href="/src/blog.html" class="btn"><i class="fas fa-arrow-left"></i> I'm done</a>
+    </div>
+    <div class="scroll-button">
+        <button class="scroll-top-btn"><i class="fas fa-arrow-up"></i></button>
+    </div>
+    <div class="content">
+        <div class="title">Youth Skyrunning World Championship</div>
+        <p>
+            <br>Around May 2022, while finishing my first year of college, I started to make plans for the summer as I would be traveling back home to Spain. I also started searching for races to do during the summer. I came across a post on social media about an event called Youth Skyrunning World Championships that caught my attention. This competition was a world level meet for young athletes under the age of 23. With no hesitation, I was up to the challenge and submitted my application to the US Team as I thought I would have a better chance over the very competitive Spanish Team.</br>
+            <br>A few days later, Ryan, the main coach, contacted me to discuss my application. After chatting for a while with him about the event, he invited me to join the team. The US Youth Skyrunning Champs would be held on Mount Comapedrosa, Andorra the weekend of July 22nd, 2022. I had about two months to get prepared. I knew I was at a big disadvantage over my opponents as I had spent the entire school year living in a city, where there is hardly any elevation gain. Once I made it to Spain, I signed up for three races to slowly get in shape.</br>
+            <br>My first race was the T2T in Tolosa, almost 25 km with 1600 m of elevation. With only a couple prior mountain sessions, I felt it in the last kilometers, but overall I felt good and managed to finish in the top 20. My next race was in the small town of Isaba, in the Pyrenees. This was a short 11 km race with 900 m of elevation called Cannelle trail. On this one I managed to finish second and first in my category. My last race was near home in Zaldibia. I really enjoy the course, which takes you up to Gaztelu, in a loop of 16 km and 900m of elevation gain. I managed to finish 4th. In addition, I did a 10 km race in Aztiria the weekend before. I finished 5th, but I didn’t feel very well due to extreme heat.</br>
+            <br>At this point I felt ready to tackle the championship. I traveled to Andorra with my family by car (about a 6 hour drive from the Basque Country). After spending a night with them, they left me with the US team. Our team that year was quite small, composed of 4 other athletes. After getting to know each other and settling into the hotel, we started hiking on the VK course, the first half of the competition. The atmosphere there was very cool because there were athletes from all over the world, such as Brazil, Peru, and Japan.</br>
+            <img src="/img/andorra.jpg">
+            <img src="/img/andorra1.jpg">
+            <img src="/img/skyrunning7.jpg">
+            <br>On that Friday, I started to get nervous about the VK race that started that afternoon. I didn’t know how my body would react to my official VK. A VK stands for Vertical Kilometer and it consists of a short race (usually 3 to 5 km long) in which you gain 1000 m of elevation. This is, all uphill. I warmed up and got in line at my scheduled time. VKs are time trials so all athletes leave individually. I started hard from the beginning. Soon my legs would start feeling heavy so I had to start speed hiking on the steeper parts. I managed to catch up with a Swiss athlete and followed him for a big portion of the race. The last 400m were very painful, the altitude started slowing me down. Nevertheless, the cheers of all the spectators and coaches gave me enough energy for a final sprint. I finished in a time of about 47 minutes. I was hoping to do better but didn’t feel at my best that day. I was still happy to finish within the top 50% in an international competition.</br>
+            <img src="/img/vk.jpg">
+            <img src="/img/skyrunning5.jpg">
+            <br>The next day I woke up a bit stiff but went on a small hike with teammates to check out the path we would take on the second part of the competition. In the afternoon we attended the inaugural ceremony and technical meeting. I loaded some carbs that night and went to sleep.</br>
+            <img src="/img/skyrunning2.png">
+            <img src="/img/skyrunning4.jpg">
+            <img src="/img/skyrunning6.jpg">
+            <br>The next morning I was even more nervous. This time I had to complete a course of over 19 km with 1400 m of elevation gain. The race started quite conservative and I settled in a group behind the leaders. Soon I would learn that the first runner's pace was too much for me so I eventually found a group with my same pace. The first 12 km were all uphill. After climbing 1400 and submitting to the mountain peak, I had to go back down. At that point the altitude was slowing me down again. However, I could appreciate the beautiful scenery.</br>
+            <img src="/img/skyrunning1.png">
+            <br>I started descending from a steep technical trail where my muscles started to fail. I had all my energy bars and water. I suffered all the way back to Arinsal but managed to cross the finish line before having cramps. I finished in a time of 2 hours and 16 minutes. That would put me within the top 50% percent again, but over 20 minutes from the winner.</br>
+            <img src="/img/skyrunning3.jpg">
+            <br>Nevertheless, I was really happy with what I had done and it gave me motivation to keep running. The team placed 15th out of 30 countries. Before leaving Andorra, all runners had some drinks at the local British Pub and had some laughs. I’m grateful I had the opportunity to represent the US and happy to meet so many people with different backgrounds. I hope to be able to repeat someday, or try something new.</br>
+            <br></br>
+            <a href="https://trailrunner.com/trail-news/technical-races-in-the-pyrenees-skyrunning-appeals-to-u-s-youth-athletes/" target="_blank">FULL ARTICLE AT: https://trailrunner.com/trail-news/technical-races-in-the-pyrenees-skyrunning-appeals-to-u-s-youth-athletes/</a>
+            
+            
+            
+            
+
+
+        </p>
+    </div>  
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const scrollTopBtn = document.querySelector(".scroll-button");
+
+            // Set initial state on window load
+            window.addEventListener("load", function () {
+                scrollTopBtn.style.opacity = 0;
+            });
+
+            scrollTopBtn.addEventListener("click", function () {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            });
+
+            window.addEventListener("scroll", function () {
+                if (window.scrollY < 300) {
+                    scrollTopBtn.style.opacity = 0;
+                } else {
+                    scrollTopBtn.style.opacity = 1;
+                }
+            });
+        });
+
+
+    </script>  
+</body>
+</html>

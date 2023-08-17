@@ -1,0 +1,292 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 0 auto; /* Center the content horizontally */
+    align-items: center; /* Center the content vertically */
+    font-family: 'Arial', sans-serif; /* Change to a more modern font */
+    /* box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); */
+    height: 100vh;
+}
+
+@media (max-width: 1400px) {
+    body {
+        width: 100%;
+    }
+}
+
+/* Styling for the header */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Banner and profile image styling */
+.banner {
+    position: relative;
+    width: 100%;
+    height: auto;
+    
+}
+
+.banner img {
+    width: 100%;
+    height: auto;
+}
+
+
+
+/* Title and navigation styling (unchanged) */
+.title {
+    font-size: 32px; /* Larger font size */
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-family: 'Workhorse', sans-serif; /* Custom font */
+    text-align: center;
+}
+
+.content{
+    width: 95%;
+}
+@media (max-width: 1400px) {
+    .content {
+        width: 90%;
+    }
+}
+
+.content p{
+    margin-bottom: 100px;
+}
+
+.content strong{
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.content a{
+    color: black;
+}
+
+.content a:hover{
+    color: rgb(174, 174, 174);
+}
+
+.content img{
+    display: block; 
+    margin: 0 auto; 
+    max-width: 70%; 
+    height: auto; 
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+@media (max-width: 1400px) {
+    .content img {
+        width: 90%;
+    }
+}
+
+@media (max-width: 500px) {
+    .content p{
+        font-size: small;
+    }
+}
+
+
+@media (max-width: 500px) {
+    .content a{
+        font-size: small;
+    }
+}
+
+@media (max-width: 500px) {
+    .content li{
+        font-size: small;
+    }
+}
+
+@media (max-width: 500px) {
+    .content strong{
+        font-size: small;
+    }
+}
+
+
+.back-button {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn2 {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #e34114;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn i {
+    margin-right: 5px;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.btn2 i {
+    margin-right: 5px;
+}
+
+.btn2:hover {
+    background-color: #b30000;
+}
+
+.scroll-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.scroll-top-btn {
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.scroll-top-btn:hover {
+    background-color: #007BFF;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.gallery img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.gallery img:hover {
+    transform: scale(1.1);
+}
+
+.fullscreen-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center; 
+}
+
+.fullscreen-image-container {
+    position: relative;
+    max-width: 90%;
+    max-height: 80vh; /* Limit height to 80% of the viewport height */
+}
+
+.fullscreen-image {
+    max-width: 100%;
+    max-height: 80vh; /* Maximum height of 80% of the viewport height */
+    display: block;
+    margin: 0 auto;
+    width: auto;
+    height: auto;
+}
+
+
+
+.exit-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+}
+
+/*Input*/
+
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+div {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

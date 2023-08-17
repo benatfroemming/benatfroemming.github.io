@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/styles2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Background</title>
+</head>
+<body>
+    <header>
+        <div class="banner">
+            <img src="/img/sansebastian.jpg" alt="Banner Image">
+        </div>
+    </header>
+    <div class="back-button">
+        <a href="/index.html" class="btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </div>
+    <div class="scroll-button">
+        <button class="scroll-top-btn"><i class="fas fa-arrow-up"></i></button>
+    </div>
+    <div class="content">
+        <div class="title">Background</div>
+        <p>
+        <br>I was born in Donostia-San Sebastian in Spain along with my twin brother on the 26th of January, 2003. As the son of an American father and a Basque mother, I’ve been a dual citizen throughout my entire life (Spain and the US). I was raised speaking 3 languages, including Euskera (Basque), Spanish, and English.</br>
+        <br>I spent the first 8 months of my life in my mother's hometown, Idiazabal. This small village is located in the Basque Country, a region in northern Spain. Then, my family moved to Bloomsburg, Pennsylvania, for a year as my dad was teaching anthropology at a university there. After, we moved back to Spain but quickly went back to the States for another year. This time, we moved to Wooster, Ohio. We attended the <a href="http://www.woomontessori.org/" target="_blank">Montessori School of Wooster</a> during that period. The next summer, my parents decided to settle down back in Idiazabal.</br>
+        <img src="/img/montessori.jpg" alt="Montessori School of Wooster.">
+        <br>I went to the local Idiazabal school <a href="https://aitaiparragirrelhi.hezkuntza.net" target="_blank">Aita Iparragirre Herri Eskola</a> until 6th grade. As this school didn’t offer higher education, similar to kids in other villages, we all commuted to Beasain, the nearest “city”. I completed 4 years of DBH (Mandatory Secondary Education) at the <a href="https://beasainbhi.hezkuntza.net">BIP Beasain</a> public institute of Loinazpe. During this time I enjoyed drawing and taking pictures in my free time. In addition, I finished my 7 years of music school were I learned the fundaments of music and piano. I also played football (Soccer) for a local team. However, I quited after 5 years to focus more on running, which I also liked. In the next couple years, I completed "Bachillerato" (the last two years of High School) in the public institute of Txindoki, which is part of the previous school but in a different facility. These two years in Spain are dedicated to preparing students for the “Selectividad”, an exam that is used to determine which degrees you can pursue at the Public Universities. During this time, I specialized in the Scientific track.</br>
+        <img src="/img/soccer.jpg" alt="Mare Nostrum Cup.">
+        <br>My plan was to major in Artificial Intelligence in Donosti. However, during the last year, I was accepted into the University of Minnesota Twin Cities. Following my instinct of taking risks and trying new things, I chose to study in the States. Nevertheless, I decided to take the entry exam in Spain just to be safe, and surprisingly I got an average score of 90% and a technical score of 95% (specific for my intended major). I graduated in 2021 and managed to end up in the top 5% of my class. During the summer, I experienced working for the first time. I was a landscape worker at the Crow River Golf Course and I also lifeguarded at the Hutchinson Aquatic Center.</br>
+        <br>Currently I’m a rising Junior at the <a href="https://twin-cities.umn.edu/" target="_blank">University of Minnesota Twin Cities</a> and my intended graduation date is May of 2025. I’m majoring in Data Science through the Computer Science Department in the College of Science and Engineering. While pursuing my carrer, I enjoy exploring the city, trying new clubs, and practicing team sports. I've been working part-time as well to pay for my living expenses. I'm an Administrative Assistant at the department of Electrical and Computer Engineering. I'm in the search for new job oportunities and internships related to my field of study to get real-world experience and develop new skills.</br>
+        <img src="/img/umn.jpg" alt="Class of 2025 Welcome Week.">
+        </p>
+    </div>  
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const scrollTopBtn = document.querySelector(".scroll-button");
+
+            // Set initial state on window load
+            window.addEventListener("load", function () {
+                scrollTopBtn.style.opacity = 0;
+            });
+
+            scrollTopBtn.addEventListener("click", function () {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            });
+
+            window.addEventListener("scroll", function () {
+                if (window.scrollY < 300) {
+                    scrollTopBtn.style.opacity = 0;
+                } else {
+                    scrollTopBtn.style.opacity = 1;
+                }
+            });
+        });
+
+
+    </script>  
+</body>
+</html>

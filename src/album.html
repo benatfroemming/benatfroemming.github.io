@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/styles2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Projects</title>
+</head>
+<body>
+    <header>
+        <div class="banner">
+            <img src="/img/horses.jpg" alt="Banner Image">
+        </div>
+    </header>
+    <div class="back-button">
+        <a href="/index.html" class="btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </div>
+    <div class="scroll-button">
+        <button class="scroll-top-btn"><i class="fas fa-arrow-up"></i></button>
+    </div>
+    <div class="content">
+    <div class="title">Art & Photography</div>
+    <div class="gallery">
+        <img src="/album/1.jpg">
+        <img src="/album/2.jpg">
+        <img src="/album/3.jpg">
+        <img src="/album/4.jpg">
+        <img src="/album/5.jpg">
+        <img src="/album/6.jpg">
+        <img src="/album/7.jpg">
+        <img src="/album/8.jpg">
+        <img src="/album/9.jpg">
+        <img src="/album/10.jpg">
+        <img src="/album/11.jpg">
+        <img src="/album/12.jpg">
+        <img src="/album/13.jpg">
+        <img src="/album/14.jpg">
+        <img src="/album/15.jpg">
+        <img src="/album/16.jpg">
+        <img src="/album/17.jpg">
+        <img src="/album/18.jpg">
+        <img src="/album/19.jpg">
+        <img src="/album/20.jpg">
+        <img src="/album/21.jpg">
+        <img src="/album/22.jpg">
+        <img src="/album/23.jpg">
+        <img src="/album/24.jpg">
+        <img src="/album/25.jpg">
+        <img src="/album/26.jpg">
+        <img src="/album/27.jpg">
+        <img src="/album/28.jpg">
+        <img src="/album/29.jpg">
+        <img src="/album/30.jpg">
+        <img src="/album/31.jpg">
+        <img src="/album/32.jpg">
+        <img src="/album/33.jpg">
+        <img src="/album/34.jpg">
+        <img src="/album/35.jpg">
+        <img src="/album/36.jpg">
+        <img src="/album/37.jpg">
+        <img src="/album/38.jpg">
+        <img src="/album/39.jpg">
+        <img src="/album/40.jpg">
+        <img src="/album/41.jpg">
+        <img src="/album/42.jpg">
+        <img src="/album/43.jpg">
+        <img src="/album/44.jpg">
+        <img src="/album/45.jpg">
+        <img src="/album/46.jpg">
+        <img src="/album/47.jpg">
+        <img src="/album/48.jpg">
+        <img src="/album/49.jpg">
+        <img src="/album/50.jpg">
+        <img src="/img/pompei.jpg">
+        <img src="/img/pompei2.jpg">
+        <img src="/img/pompei3.jpg">
+        <img src="/img/positano1.jpg">
+        <img src="/img/positano2.jpg">
+        <img src="/img/positano3.jpg">
+        <img src="/img/capri3.jpg">
+        <img src="/album/51.jpeg">
+        <img src="/album/52.jpeg">
+        <img src="/album/53.jpeg">
+        <img src="/album/54.jpeg">
+        <img src="/album/55.jpg">
+        <img src="/img/naples1.jpg">
+        <img src="/img/naples2.jpg">
+        <img src="/img/rome1.jpg">
+        <img src="/img/rome2.jpg">
+        <img src="/img/barcelona1.jpg">
+        <img src="/img/barcelona2.jpg">      
+    </div>
+    </div>
+    <div class="fullscreen-overlay">
+        <span class="exit-button">&times;</span>
+        <div class="fullscreen-image-container">
+            <img class="fullscreen-image" src="">
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const scrollTopBtn = document.querySelector(".scroll-button");
+
+            // Set initial state on window load
+            window.addEventListener("load", function () {
+                scrollTopBtn.style.opacity = 0;
+            });
+
+            scrollTopBtn.addEventListener("click", function () {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            });
+
+            window.addEventListener("scroll", function () {
+                if (window.scrollY < 300) {
+                    scrollTopBtn.style.opacity = 0;
+                } else {
+                    scrollTopBtn.style.opacity = 1;
+                }
+            });
+
+            const galleryItems = document.querySelectorAll(".gallery img");
+            const overlay = document.querySelector(".fullscreen-overlay");
+            const fullscreenImage = document.querySelector(".fullscreen-image");
+            const exitButton = document.querySelector(".exit-button");
+
+            galleryItems.forEach(item => {
+                item.addEventListener("click", function () {
+                    const src = item.getAttribute("src");
+                    fullscreenImage.setAttribute("src", src);
+                    overlay.style.display = "flex";
+                });
+            });
+
+            exitButton.addEventListener("click", function () {
+                overlay.style.display = "none";
+            });
+
+            overlay.addEventListener("click", function () {
+                overlay.style.display = "none";
+            });
+        });    
+
+
+
+    </script>  
+</body>
+</html>

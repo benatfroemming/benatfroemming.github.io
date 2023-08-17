@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/styles2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Education</title>
+</head>
+<body>
+    <header>
+        <div class="banner">
+            <img src="/img/umn2.jpg" alt="Banner Image">
+        </div>
+    </header>
+    <div class="back-button">
+        <a href="/index.html" class="btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </div>
+    <div class="scroll-button">
+        <button class="scroll-top-btn"><i class="fas fa-arrow-up"></i></button>
+    </div>
+    <div class="content">
+        <div class="title">Education</div>
+        <p>
+            <strong>Beasain Public Institute BIP</strong>
+            <br><i>High School Diploma | Graduated in May, 2021 | GPA: 9.42 (10-point grading scale) | Ranked in Top 5% of class</i></br>
+            <img src="/img/bip.jpeg" alt="Beasain Public Institute BIP">
+            <strong>University of Minnesota Twin Cities</strong>
+            <br><i>Bachelor's in Data Science | Currently in progress | Cumulative GPA: 3.7 (4-point grading scale) | Graduating Spring 2025</i><br>
+            Completed major classes: Computing & Programming Concepts Csci 1133, Software Development & Data Structures Csci 2081,
+            Systems & Systems Programming Csci 3061, Discrete Structures & Algorithms Csci 3041, and Regression and Statistical Computing
+            Stat 3301.
+            <img src="/img/umn3.png">
+            <img src="/img/umn4.jpg">
+        
+        </p>
+    </div>  
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const scrollTopBtn = document.querySelector(".scroll-button");
+
+            // Set initial state on window load
+            window.addEventListener("load", function () {
+                scrollTopBtn.style.opacity = 0;
+            });
+
+            scrollTopBtn.addEventListener("click", function () {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            });
+
+            window.addEventListener("scroll", function () {
+                if (window.scrollY < 300) {
+                    scrollTopBtn.style.opacity = 0;
+                } else {
+                    scrollTopBtn.style.opacity = 1;
+                }
+            });
+        });
+
+
+    </script>  
+</body>
+</html>
