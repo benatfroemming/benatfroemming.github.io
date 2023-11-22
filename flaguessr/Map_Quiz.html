@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>Vector Tiles in Leaflet JS</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.8.0/leaflet.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-jg/vAn4QuAnkm2hK9tGg71AGP1hTva1E3pblM0RPOAS5rau7fEEIOfGtrTz4t/FAZyTmdQOFYoGNeXpDdX4N3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.8.0/leaflet.css" />
+    <link href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css" rel='stylesheet' />
+    <script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js"></script>
+    <script src="https://unpkg.com/@maplibre/maplibre-gl-leaflet@0.0.17/leaflet-maplibre-gl.js"></script>
+    <script src="https://kit.fontawesome.com/d8dc0d9035.js" crossorigin="anonymous"></script>
+    <style>
+      body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  transition: background-color 0.5s ease;
+  font-family: Arial, sans-serif;
+  /* background-color: #222; */
+}
+.leaflet-control-attribution a {
+    font-size: 9px;
+} 
+.map-container {
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#map {
+  width: 100%;
+  height: calc(100% - 100px);
+  z-index: 1;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.mapboxgl-ctrl-attrib-inner {
+  display: none;
+}
+
+.country-info {
+  background-color: transparent;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  transition: background-color 0.5s ease;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+ 
+#flag{
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+  display: none;
+}
+
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content {
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #888;
+  position: absolute;
+  width: 400px;
+  height: 60%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow-y: auto;
+  padding-top: 45px;
+  transition: background-color 0.5s ease;
+  text-align: center;
+}
+
+@media screen and (max-width: 700px) {
+  .modal-content {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .modal-content {
+    width: 80%;
+  }
+}
+
+/* The Close Button */
+.close {
+  color: rgb(126, 126, 126);
+  opacity: 0.8;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 32px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content p {
+  margin-top: 0;
+  align-self: flex-start;
+  font-family: Arial, sans-serif;
+  font-size: 12px;;
+}
+
+.modal-content1 p {
+  margin-top: 0;
+  align-self: flex-start;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+}
+
+.close:hover,
+.close:focus {
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.close1:hover,
+.close1:focus {
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.preview-text {
+  display: flex; 
+  flex-wrap: nowrap;
+  align-items: column;
+  padding-top: 10px;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+}
+
+.title{
+  font-family: Arial, sans-serif;
+  margin-left: 30px;
+  margin-right: 30px;
+  font-size: 24px;
+}
+
+@media screen and (max-width: 700px) {
+  .title{
+  margin-left: 15px;
+  margin-right: 15px;
+  font-size: 20px;
+}
+}
+
+.preview-text a {
+  margin-left: 30px; 
+  margin-right: 30px;
+  line-height: 1.3;
+}
+
+@media screen and (max-width: 700px) {
+  .preview-text a {
+  margin-left: 15px; 
+  margin-right: 15px;
+}
+}
+
+.fa-circle-check {
+  margin-left: 5px;
+  font-size: 16px;
+  color: rgb(28, 197, 28);
+}
+
+@media screen and (max-width: 700px) {
+  .fa-circle-check {
+  font-size: 14px;
+}
+}
+
+.fa-circle-xmark {
+  margin-left: 5px;
+  font-size: 16px;
+  color: rgb(255, 0, 0);
+}
+
+@media screen and (max-width: 700px) {
+  .fa-circle-xmark {
+  font-size: 14px;
+}
+}
+
+#inf {
+  color: rgb(255, 255, 255);
+  opacity: 0.8;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  text-shadow: 0 0 2px #000;
+  font-size: 18px;
+}
+
+#inf.fa-bars {
+  opacity: 0.8;
+}
+
+#inf.fa-bars:hover {
+  opacity: 1;
+}
+
+.dark-mode {
+  background-color: #191919;
+  color: #ffffff;
+}
+
+.dark-mode .modal-content {
+  background-color: #272727;
+  color: #ffffff;
+}
+
+.dark-mode .modal-content1 {
+  background-color: #272727;
+  color: #ffffff;
+}
+
+.dark-mode .popup {
+  background-color: #272727;
+  color: #ffffff;
+}
+
+.dark-mode .country-info {
+  background-color: #272727;
+  color: #ffffff;
+}
+
+.dark-mode .modal-content3 {
+  background-color: #272727;
+  color: #ffffff;
+}
+
+#night-mode-switch {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  z-index: 999;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 20px; /* Adjusted to make the switch symmetrical */
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px; /* Adjusted to make the switch symmetrical */
+  background-color: #fff;
+  transition: .4s;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.switch input:checked + .slider {
+  background-color: #59e45d;
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(20px); /* Adjusted to make the switch symmetrical */
+}
+
+.popup {
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #888;
+  position: fixed;
+  width: 400px;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow-y: auto;
+  padding-top: 40px;
+  transition: background-color 0.5s ease;
+  display: block;
+  z-index: 2;
+  font: fallback;
+  max-height: calc(100% - 80px); /* Adjust margin height accordingly */
+}
+
+@media screen and (max-width: 500px) {
+  .popup {
+    width: 80%;
+    max-width: 400px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-height: calc(100% - 80px); /* Adjust margin height accordingly */
+  }
+}
+
+.title {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .description {
+      margin-bottom: 20px;
+      margin-left: 20px;
+      margin-top: 20px;
+    }
+
+    .button-div {
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+
+    .start-button {
+      padding: 10px 20px;
+      background-color: rgb(28, 197, 28);
+      color: white;
+      border: none;
+      cursor: pointer;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .popup label {
+      margin-left: 20px;
+    }
+
+  .modal1 {
+  display: block; 
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+}
+
+.country-info {
+  display: flex;
+  align-items: center;
+}
+
+.counter-right {
+  position: absolute;
+  top: 50%;
+  right: 30px;
+  transform: translateY(-50%);
+  font-size: 18px;
+}
+
+@media screen and (max-width: 500px) {
+  .counter-right {
+  font-size: 14px;
+}
+}
+
+.counter-left {
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  transform: translateY(-50%);
+}
+
+.counter-right p {
+  margin: 5px 0;
+  text-align: right;
+}
+
+.fa-check{
+  color: rgb(39, 232, 39);
+  margin-right: 12px;
+}
+
+.fa-times{
+  color: red;
+  margin-right: 12px;
+}
+
+.fa-question{
+  font-size: 18px;
+  margin-right: 16px;
+}
+
+#remaining{
+  font-size: 24px;
+}
+
+.preview-text h1 {
+  font-size: 18px;
+  text-align: center;
+}
+
+@media screen and (max-width: 500px) {
+  .preview-text h1 {
+  font-size: 16px;
+  text-align: center;
+}
+}
+
+.result-message {
+  text-align: left;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 15px;
+}
+
+@media screen and (max-width: 500px) {
+  .result-message {
+  font-size: 13px;
+}
+}
+
+.stars {
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.stars i {
+  font-size: 32px;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+
+.restart-button,
+.review-button,
+.exit-button {
+  padding: 10px 20px;
+  background-color: rgb(28, 197, 28);
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.modal-content1 {
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #888;
+  position: fixed;
+  width: 400px;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow-y: auto;
+  transition: background-color 0.5s ease;
+  display: block;
+  z-index: 2;
+  font: fallback;
+  max-height: calc(100% - 80px); /* Adjust margin height accordingly */
+  text-align: center;
+}
+
+@media screen and (max-width: 500px) {
+  .modal-content1 {
+    width: 80%;
+    max-width: 400px;
+    max-height: calc(100% - 80px);
+  }
+}
+
+.modal3 {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content3 {
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #888;
+  position: absolute;
+  width: 400px;
+  height: 60%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow-y: auto;
+  padding-top: 45px;
+  transition: background-color 0.5s ease;
+  max-height: calc(100% - 80px); /* Adjust margin height accordingly */
+}
+
+@media screen and (max-width: 500px) {
+  .modal-content3 {
+    width: 80%;
+    max-width: 400px;
+    max-height: calc(100% - 80px);
+  }
+}
+
+.close3 {
+  color: rgb(126, 126, 126);
+  opacity: 0.8;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 32px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content3 p {
+  margin-top: 0;
+  align-self: flex-start;
+  font-family: Arial, sans-serif;
+  font-size: 12px;;
+}
+
+.close3:hover,
+.close3:focus {
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.preview-text {
+  display: flex; 
+  flex-wrap: nowrap;
+  align-items: column;
+  padding-top: 10px;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+}
+
+.title3{
+  font-family: Arial, sans-serif;
+  margin-left: 30px;
+  margin-right: 30px;
+  font-size: 24px;
+}
+
+@media screen and (max-width: 700px) {
+  .title3{
+  margin-left: 15px;
+  margin-right: 15px;
+  font-size: 20px;
+}
+}
+
+.preview-text3 a {
+  margin-left: 30px; 
+  margin-right: 30px;
+  line-height: 1.3;
+}
+
+@media screen and (max-width: 700px) {
+  .preview-text3 a {
+  margin-left: 15px; 
+  margin-right: 15px;
+}
+}
+
+.fa-circle-check {
+  margin-left: 5px;
+  font-size: 16px;
+  color: rgb(28, 197, 28);
+}
+
+@media screen and (max-width: 700px) {
+  .fa-circle-check {
+  font-size: 14px;
+}
+}
+
+.fa-circle-xmark {
+  margin-left: 5px;
+  font-size: 16px;
+  color: rgb(255, 0, 0);
+}
+
+@media screen and (max-width: 700px) {
+  .fa-circle-xmark {
+  font-size: 14px;
+}
+}
+
+
+.flag2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  padding-top: 30px;
+}
+
+#flag2{
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.custom-icon {
+  color: rgb(28, 197, 28);
+}
+
+
+</style>
+
+<!-- HTML -->
+<script>
+  //get data from openstreetmap
+  function initialize() {
+    var earth = new WE.map('earth_div');
+    WE.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(earth);
+  }
+
+</script>    
+</head>
+<body onload="initialize()"> 
+  <div id="myModal1" class="modal1">
+  <div id="popup" class="popup">
+    <div class="title">Ready to test your knowledge?</div>
+    <div class="description">Select your preferred continents:</div>
+    <label>
+      <input type="checkbox" id="select-all" onchange="selectAllContinents()"> Select All
+    </label><br>
+    <label>
+      <input type="checkbox" class="continent" value="Africa" onchange="checkContinentSelection()"> Africa
+    </label><br>
+    <label>
+      <input type="checkbox" class="continent" value="Asia" onchange="checkContinentSelection()"> Asia
+    </label><br>
+    <label>
+      <input type="checkbox" class="continent" value="Europe" onchange="checkContinentSelection()"> Europe
+    </label><br>
+    <label>
+      <input type="checkbox" class="continent" value="North America" onchange="checkContinentSelection()"> North America
+    </label><br>
+    <label>
+      <input type="checkbox" class="continent" value="South America" onchange="checkContinentSelection()"> South America
+    </label><br>
+    <label>
+      <input type="checkbox" class="continent" value="Oceania" onchange="checkContinentSelection()"> Oceania
+    </label><br>
+    <div class="description">Select amount of questions:</div>
+    <label>
+      <input type="checkbox" class="questions" value="20 flags" onchange="questionSelection2()"> 20 flags
+    </label><br>
+    <label>
+      <input type="checkbox" class="questions" value="All flags" onchange="questionSelection1()"> All flags
+    </label><br>
+    <div class="button-div">
+      <button class="start-button" id="button" onclick="startGame()">Start</button>
+    </div>
+  </div>
+</div>
+  <div class="map-container">
+    <i id="inf" class="fa-solid fa-bars"></i>
+    <div id="map"></div>
+    <div class="country-info">
+      <img id="flag" src="https://flagcdn.com/h80/@.png" srcset="https://flagcdn.com/h120/@.png 2x" height="80">
+      <div class="counter-right">
+        <p id="check-counter"><i class="fas fa-check"></i><span id="val1">0</span></p>
+        <p id="mistakes-counter"><i class="fas fa-times"></i><span id="val2">0</span></p>
+      </div>
+      <div class="counter-left">
+        <p id="remaining"></p>
+      </div>
+    </div>
+  </div>
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div id="night-mode-switch">
+        <label class="switch">
+          <input type="checkbox" id="switch-toggle">
+          <span class="slider"></span>
+        </label>
+      </div>
+      <p>
+        <div class="preview-text">
+          <a><br>Firstly, I would like to share my sincere appreciation to Leaflet for their valuable contribution in creating the map that helped me develop the game. Their hard work and expertise have been instrumental in the success of this project. This game uses the Leaflet API map as the base for the game.</br><br>I would like to extend my gratitude to MapTiler for providing the tileset used in this game to create an accurate and visually appealing map for your users.</br><br>OpenStreetMap provides the data, such as the street and building information, Leaflet is a JavaScript library that enables you to display that data in an interactive and customizable way on a web map.</br></a>
+        </div>  
+      </p>
+    </div>
+  </div>   
+  <div id="myModal2" class="modal">
+    <div class="modal-content1">
+      <h1 id="result-title"></h1>
+      <div class="result-message"><a id="result-message"></a></div>
+      <div class="stars">
+        <i id="star1" class="fa-solid fa-star"></i>
+        <i id="star2" class="fa-solid fa-star"></i>
+        <i id="star3" class="fa-solid fa-star"></i>
+      </div>
+      <div class="buttons">
+        <button onclick="restart()" class="restart-button">Restart Game</button>
+        <button onclick="review()" class="review-button">Review Flags</button>
+        <button onclick="index.html" class="exit-button">Exit Game</button>
+      </div>
+    </div>
+  </div>
+  <div id="myModal3" class="modal3">
+    <div class="modal-content3">
+      <span class="close3">&times;</span>
+      <p class="full-data">
+        <h1 id="title3" class="title3"></h1>
+        <div id="Independent" class="preview-text"></div>
+        <div id="ISO" class="preview-text"></div>  
+        <div id="Continent" class="preview-text"></div>  
+        <div id="Capital" class="preview-text"></div>  
+        <div id="flagData" class="preview-text"></div>
+        <div class="flag2">
+          <img id="flag2" src="https://flagcdn.com/h80/@.png" srcset="https://flagcdn.com/h120/@.png 2x" height="80">
+        </div>
+        <div id="countryInfo" class="preview-text"></div>   
+        <div id="mapLink" class="preview-text"></div>  
+        <div id="wikiLink" class="preview-text"></div>    
+        <div class="preview-text"><br> </br></div> 
+      </p>
+    </div>
+  </div>
+  <script src="confetti.js"></script>
+<script>
+ 
+  const key = 'w473S9xJGrpxxjDc5tA1';
+  //create map
+  const map = L.map('map', {
+    maxBounds: L.latLngBounds(L.latLng(-90, -180), L.latLng(90, 180)),
+    maxBoundsViscosity: 1.0,
+    minZoom: 3,
+    maxZoom: 18,
+  }).setView([40, -10], 3);
+
+  //add maptiler tile
+  const gl = L.maplibreGL({
+    attribution: "\u003ca href=\"https://www.maptiler.com/copyright/\" target=\"_blank\"\u003e\u0026copy; MapTiler\u003c/a\u003e \u003ca href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\"\u003e\u0026copy; OpenStreetMap contributors\u003c/a\u003e",
+    style: `https://api.maptiler.com/maps/c250f461-7166-416c-a59d-76dae10ed60f/style.json?key=w473S9xJGrpxxjDc5tA1`
+  }).addTo(map);
+
+  var countriesLayer = L.geoJSON(null, {
+  onEachFeature: onEachFeature,
+  style: {
+      fillOpacity: 0.5,
+      weight: 0,
+      color: 'transparent'
+  }
+  }).addTo(map);
+
+fetch('countries.geojson')
+  .then(response => response.json())
+  .then(data => {
+    const countries = data.features.map(feature => feature.properties.ADMIN);
+    countriesLayer.addData(data);
+  });
+
+// Hover effect
+countriesLayer.on('mouseover', function (event) {
+  var layer = event.layer;
+  if (!layer.getElement().classList.contains('selected')) {
+    layer.setStyle({
+      fillOpacity: 0.4,
+      weight: 1,
+      fillColor: 'black',
+      color: 'black'
+    });
+  }
+});
+
+countriesLayer.on('mouseout', function (event) {
+  var layer = event.layer;
+  if (!layer.getElement().classList.contains('selected')) {
+    layer.setStyle({
+      fillOpacity: 0.5,
+      fillColor: 'transparent',
+      weight: 0,
+      color: 'transparent'
+    });
+  }
+});
+
+var randomCountry = "";
+var incorrectMarkers = L.layerGroup(); // Create a layer group for incorrect markers
+var count = 0;
+var score = 0;
+function onEachFeature(feature, layer) {
+  layer.on('click', function (event) {
+    var countryName = event.target.feature.properties.ADMIN;
+    const checkCounter = document.getElementById('val1');
+    const mistakesCounter = document.getElementById('val2');
+    const remainingCounter = document.getElementById('remaining');
+
+    if (true) {
+      var random = randomCountry.longname;
+      if (countryName === random) {
+        var selectedLayer = event.target;
+        selectedLayer.setStyle({
+          fillOpacity: 0.4,
+          color: 'black',
+          fillColor: 'green',
+          weight: 1
+        });
+        selectedLayer.getElement().classList.add('selected');
+        selectedLayer.off('mouseover'); // Disable hover event
+        selectedLayer.off('mouseout'); // Disable hover event
+        selectedLayer.off('click'); // Disable click event
+        checkCounter.textContent = parseInt(checkCounter.textContent) + 1;
+        remainingCounter.innerHTML = parseInt(remainingCounter.innerHTML) - 1;
+      } else {
+        // Find the random country's feature and update its style
+        // Find the random country's feature and update its style
+countriesLayer.eachLayer(function (layer) {
+  var layerCountryName = layer.feature.properties.ADMIN;
+  if (layerCountryName === random) {
+    layer.setStyle({
+      fillOpacity: 0.4,
+      fillColor: 'red',
+      weight: 1,
+      color: 'black'
+    });
+    layer.getElement().classList.add('selected');
+    layer.off('mouseover'); // Disable hover event
+    layer.off('mouseout'); // Disable hover event
+    layer.off('click'); // Disable click event
+    mistakesCounter.textContent = parseInt(mistakesCounter.textContent) + 1;
+    remainingCounter.innerHTML = parseInt(remainingCounter.innerHTML) - 1;
+  } else if (layerCountryName === countryName) {
+    // Temporarily highlight the selected (incorrect) country in red
+    layer.setStyle({
+      fillColor: 'red',
+      weight: 1,
+      color: 'black'
+    });
+    
+    // Delay turning the selected country back to transparent
+    setTimeout(function() {
+      layer.setStyle({
+        fillOpacity: 0.5,
+        weight: 0,
+        fillColor: 'transparent',
+        color: 'transparent'
+      });
+      layer.getElement().classList.remove('selected');
+    }, 200);
+  }
+});
+
+      }
+      count--;
+      if (count > 0) {
+        showRandomFlag();
+      }else{
+      var flagImg = document.getElementById("flag");
+      flagImg.style.display = "none";
+      score = parseInt(checkCounter.textContent);
+      result();
+    }
+  }
+})};
+
+// Info pop up
+var modal = document.getElementById("myModal");
+var btn = document.getElementById('inf');
+var span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+modal.onclick = function() {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+function adjustFlagSize() {
+  var flagImg = document.getElementById("flag");
+  if (window.innerWidth < 500) {
+    flagImg.height = 50;
+  }else if (window.innerWidth < 720) {
+    flagImg.height = 60;
+  } else {
+    flagImg.height = 70;
+  }
+}
+
+// Call the function when the page loads and whenever the window is resized
+window.addEventListener("load", adjustFlagSize);
+window.addEventListener("resize", adjustFlagSize);
+
+function selectAllContinents() {
+    var selectAllCheckbox = document.getElementById('select-all');
+    var continentCheckboxes = document.getElementsByClassName('continent');
+
+    if (selectAllCheckbox.checked) {
+      for (var i = 0; i < continentCheckboxes.length; i++) {
+        continentCheckboxes[i].checked = true;
+      }
+    } else {
+      for (var i = 0; i < continentCheckboxes.length; i++) {
+        continentCheckboxes[i].checked = false;
+      }
+    }
+
+    checkContinentSelection(); // Update continent selection status
+  }
+
+  function checkContinentSelection() {
+  var continents = document.getElementsByClassName("continent");
+  var selectedContinents = 0;
+
+  for (var i = 0; i < continents.length; i++) {
+    if (continents[i].checked) {
+      selectedContinents++;
+    }
+  }
+
+  var questionOptions = document.getElementsByClassName("questions");
+  var twentyFlagsOption = document.querySelector('.questions[value="20 flags"]');
+  var allFlagsOption = document.querySelector('.questions[value="All flags"]');
+
+  if (selectedContinents === 1 && (continents[4].checked || continents[5].checked)) {
+    twentyFlagsOption.disabled = true;
+    twentyFlagsOption.checked = false;
+    allFlagsOption.checked = true;
+    allFlagsOption.disabled = true;
+  } else {
+    twentyFlagsOption.disabled = false;
+    allFlagsOption.disabled = false;
+  }  
+
+  if (selectedContinents === continents.length) {
+    document.getElementById('select-all').checked = true;
+  } else {
+    document.getElementById('select-all').checked = false;
+  }
+}
+var questionNum = 0;
+
+function questionSelection1() {
+  var twentyFlagsOption = document.querySelector('.questions[value="20 flags"]');
+  var allFlagsOption = document.querySelector('.questions[value="All flags"]');
+  if (allFlagsOption.checked) {
+    twentyFlagsOption.checked = false;
+  }
+  questionNum = 0;
+}
+
+function questionSelection2() {
+  var twentyFlagsOption = document.querySelector('.questions[value="20 flags"]');
+  var allFlagsOption = document.querySelector('.questions[value="All flags"]');
+  if (twentyFlagsOption.checked) {
+    allFlagsOption.checked = false;
+  }
+  questionNum = 20;
+}
+
+
+const switchToggle = document.getElementById('switch-toggle');
+const bodyElement = document.body;
+
+switchToggle.addEventListener('change', toggleNightMode);
+
+function toggleNightMode() {
+  bodyElement.classList.toggle('dark-mode');
+}
+
+  
+var filteredCountries = []; // Global variable to store the filtered countries based on selected continents
+function startGame() {
+  var continentCheckboxes = document.getElementsByClassName('continent');
+
+  selectedContinents = [];
+  for (var i = 0; i < continentCheckboxes.length; i++) {
+    if (continentCheckboxes[i].checked) {
+      selectedContinents.push(continentCheckboxes[i].value);
+    }
+  }
+
+  if (selectedContinents.length === 0) {
+    alert("Please select at least one continent.");
+    return;
+  }
+
+
+  var twentyFlagsOption = document.querySelector('.questions[value="20 flags"]');
+  var allFlagsOption = document.querySelector('.questions[value="All flags"]');
+  if (allFlagsOption.checked == false && twentyFlagsOption.checked == false) {
+    alert("Please select how many questions you want.");
+    return;
+  }
+  
+  var modal1 = document.getElementById("myModal1");
+  var popup = document.getElementById("popup");
+  popup.style.display = 'none';
+  modal1.style.display = 'none';
+
+  var lists;
+  fetch('countries.json')
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    list = data.countries; // Store the fetched countries data
+    filterCountries();
+    showRandomFlag();
+  });
+}
+
+var total = 0;
+function filterCountries() {
+  for (var i = 0; i < list.length; i++) {
+    var country = list[i];
+    if (selectedContinents.includes(country.Continent)) {
+      filteredCountries.push(country);
+    }
+  }
+
+  if (questionNum === 20 && filteredCountries.length > 20) {
+    count = 20;
+    total = 20;
+  }else{
+    count = filteredCountries.length;
+    total = filteredCountries.length;
+  }
+  const checkCounter = document.getElementById('remaining');
+  checkCounter.innerHTML = count;
+}
+
+
+var currentCountry = "@.png";
+
+function showRandomFlag() {
+  var flagImg = document.getElementById("flag");
+
+  flagImg.style.display = "block";
+
+  var randomIndex = Math.floor(Math.random() * filteredCountries.length);
+  randomCountry = filteredCountries[randomIndex];
+
+  var link = randomCountry.name + ".png";
+  flagImg.src = flagImg.src.replace(currentCountry, link);
+  flagImg.srcset = flagImg.srcset.replace(currentCountry, link);
+
+  currentCountry = link;
+  filteredCountries.splice(randomIndex, 1);
+}
+
+function handleWindowResize() {
+  if (window.innerWidth < 1100) {
+    map.options.minZoom = 2;
+    map.setView([45, -20], 2); 
+  } else{
+    map.options.minZoom = 3; 
+    map.setView([40, -10], 3); 
+  }
+}
+window.addEventListener('resize', handleWindowResize);
+handleWindowResize();
+
+
+function result() {
+  var modal2 = document.getElementById("myModal2");
+  var title = document.getElementById("result-title");
+  var message = document.getElementById("result-message");
+  var star1 = document.getElementById("star1");
+  var star2 = document.getElementById("star2");
+  var star3 = document.getElementById("star3");
+  setTimeout(function() {
+    modal2.style.display = 'block';
+    }, 500);
+    
+  var grade = (score / total * 100).toFixed(2);
+  
+  if (grade < 30) {
+    title.innerHTML = "Good try!";
+    message.innerHTML = "You earned a score of " + grade + "%. You guessed " + score + " flags out of " +  total + ". Press 'Restart' to play again, 'Review' to look at the flags you missed, or 'Exit' to go back to the Home page.";
+    star1.style.color = "gray";
+    star2.style.color = "gray";
+    star3.style.color = "gray";
+  } else if (grade < 60) {
+    title.innerHTML = "Good try!";
+    message.innerHTML = "You earned a score of " + grade + "%. You guessed " + score + " flags out of " +  total + ". Press 'Restart' to play again, 'Review' to look at the flags you missed, or 'Exit' to go back to the Home page.";
+    star1.style.color = "rgb(255, 238, 0)";
+    star2.style.color = "gray";
+    star3.style.color = "gray";
+  } else if (grade < 90) {
+    title.innerHTML = "Good job!";
+    message.innerHTML = "You earned a score of " + grade + "%. You guessed " + score + " flags out of " +  total + ". Press 'Restart' to play again, 'Review' to look at the flags you missed, or 'Exit' to go back to the Home page.";
+    star1.style.color = "rgb(255, 238, 0)";
+    star2.style.color = "rgb(255, 238, 0)";
+    star3.style.color = "gray";
+  } else {
+    title.innerHTML = "Excellent!";
+    message.innerHTML = "You earned a score of " + grade + "%. You guessed " + score + " flags out of " +  total + ". Press 'Restart' to play again, 'Review' to look at the flags you missed, or 'Exit' to go back to the Home page.";
+    star1.style.color = "rgb(255, 238, 0)";
+    star2.style.color = "rgb(255, 238, 0)";
+    star3.style.color = "rgb(255, 238, 0)";
+    const start = () => {
+      setTimeout(function(){
+          confetti.start();
+      },100);
+    };
+    const stop = () => {
+      setTimeout(function(){
+          confetti.stop();
+      },4000);
+    }
+    start();
+    stop();
+  }
+}
+
+function restart() {
+  window.location.href = "Map_Quiz.html";
+}
+
+function review() {
+  var modal2 = document.getElementById("myModal2");
+  modal2.style.display = 'none';
+  var currentCountry2 = "@.png";
+  const flagImg2 = document.getElementById("flag2");
+
+  countriesLayer.eachLayer(function (layer) {
+    if (!layer.getElement().classList.contains('selected')) {
+      layer.removeEventListener('mouseover');
+      layer.removeEventListener('mouseout');
+      layer.off('click');
+      layer.setStyle({
+        fillOpacity: 0.5,
+        weight: 0,
+        fillColor: 'transparent',
+        color: 'transparent'
+      });
+    } else {
+      const iso2 = layer.feature.properties.ISO_A2;
+
+      fetch('centroids.json')
+        .then(response => response.json())
+        .then(data => {
+          // Search for the ISO2 code in the centroids data
+          const centroidData = data.find(item => item.country === iso2);
+
+          if (centroidData) {
+            const { latitude, longitude, name } = centroidData;
+
+            // Create a Leaflet marker with a green icon
+            var greenIcon = L.icon({
+              iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+              shadowUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-shadow.png',
+              iconSize: [25, 41],
+              iconAnchor: [12, 41],
+              shadowSize: [41, 41],
+              shadowAnchor: [12, 41]
+            });
+
+            // Create a marker with the green icon and add it to the map
+            var marker = L.marker([latitude, longitude], {
+              icon: greenIcon
+            }).addTo(map);
+
+            
+            // Add a click event handler to the marker
+            marker.on('click', function(event) {
+              var modal3 = document.getElementById("myModal3");
+              var countryName = layer.feature.properties.ADMIN;
+              var iso2 = layer.feature.properties.ISO_A2.toLowerCase();
+              var countryISO2 = iso2 + ".png";
+              flagImg2.src = flagImg2.src.replace(currentCountry2, countryISO2);
+              flagImg2.srcset = flagImg2.srcset.replace(currentCountry2, countryISO2);
+              currentCountry2 = countryISO2;
+
+              fetch("countries.json")
+                .then(response => response.json())
+                .then(data => {
+                  // Find the object in the array that matches the selected ISO2 code
+                  const countryData = data.countries.find(countryData => countryData.name === iso2);
+
+                  // Update the HTML elements with the country data
+                  if (countryData.independent === true) {
+                    document.getElementById("Independent").innerHTML = `<a><strong>Independent:</strong><i class="fa-solid fa-circle-check"></i></a>`;
+                  } else {
+                    document.getElementById("Independent").innerHTML = `<a><strong>Independent:</strong><i class="fa-solid fa-circle-xmark"></i></a>`;
+                  }
+            document.getElementById("title3").textContent = countryData.longname;
+            document.getElementById("ISO").innerHTML = `<a><strong>ISO:</strong>&emsp;${countryData.ISO}</a>`;
+            document.getElementById("Continent").innerHTML = `<a><strong>Continent:</strong>&emsp;${countryData.Continent}</a>`;
+            document.getElementById("Capital").innerHTML = `<a><strong>Capital:</strong>&emsp;${countryData.Capital}</a>`;
+            document.getElementById("flagData").innerHTML = `<a>${countryData.flag}</a>`;
+            document.getElementById("flag2").src = flagImg2.src;
+            document.getElementById("flag2").srcset = flagImg2.srcset;
+            document.getElementById("countryInfo").innerHTML = `<a>${countryData.description}</a>`;
+            document.getElementById("mapLink").innerHTML = `<a target="_blank" style="color: rgb(0, 195, 255);" href="${countryData.mapLink}">Google Maps</a>`;
+            document.getElementById("wikiLink").innerHTML = `<a target="_blank" style="color: rgb(0, 195, 255);" href="${countryData.wikiLink}">Wikipedia</a>`;
+
+            // Show the modal3
+            modal3.style.display = 'block';
+            var modalContent = document.querySelector(".modal-content3");
+            modalContent.scrollTop = 0;
+          });
+      });
+    }
+  })
+  .catch(error => {
+    console.error('Error fetching centroids.json:', error);
+  });
+  layer.on('click', function (event) {
+  var modal3 = document.getElementById("myModal3");
+  var countryName = event.target.feature.properties.ADMIN;
+  var iso2 = event.target.feature.properties.ISO_A2.toLowerCase();
+  var countryISO2 = iso2 + ".png";
+  flagImg2.src = flagImg2.src.replace(currentCountry2, countryISO2);
+  flagImg2.srcset = flagImg2.srcset.replace(currentCountry2, countryISO2);
+  currentCountry2 = countryISO2;
+
+  fetch("countries.json")
+    .then(response => response.json())
+    .then(data => {
+      // Find the object in the array that matches the selected ISO2 code
+      const countryData = data.countries.find(countryData => countryData.name === iso2);
+
+      // Update the HTML elements with the country data
+      if (countryData.independent === true) {
+        document.getElementById("Independent").innerHTML = `<a><strong>Independent:</strong><i class="fa-solid fa-circle-check"></i></a>`;
+      } else {
+        document.getElementById("Independent").innerHTML = `<a><strong>Independent:</strong><i class="fa-solid fa-circle-xmark"></i></a>`;
+      }
+      document.getElementById("title3").textContent = countryData.longname;
+      document.getElementById("ISO").innerHTML = `<a><strong>ISO:</strong>&emsp;${countryData.ISO}</a>`;
+      document.getElementById("Continent").innerHTML = `<a><strong>Continent:</strong>&emsp;${countryData.Continent}</a>`;
+      document.getElementById("Capital").innerHTML = `<a><strong>Capital:</strong>&emsp;${countryData.Capital}</a>`;
+      document.getElementById("flagData").innerHTML = `<a>${countryData.flag}</a>`;
+      document.getElementById("flag2").src = flagImg2.src;
+      document.getElementById("flag2").srcset = flagImg2.srcset;
+      document.getElementById("countryInfo").innerHTML = `<a>${countryData.description}</a>`;
+      document.getElementById("mapLink").innerHTML = `<a target="_blank" style="color: rgb(0, 195, 255);" href="${countryData.mapLink}">Google Maps</a>`;
+      document.getElementById("wikiLink").innerHTML = `<a target="_blank" style="color: rgb(0, 195, 255);" href="${countryData.wikiLink}">Wikipedia</a>`;
+
+      // Show the modal3
+      modal3.style.display = 'block';
+      var modalContent = document.querySelector(".modal-content3");
+      modalContent.scrollTop = 0;
+    });
+});
+}})}
+
+
+var modal3 = document.getElementById("myModal3");
+var fullData3 = document.querySelector(".title3");
+var span3 = document.getElementsByClassName("close3")[0];
+
+span3.onclick = function() {
+  modal3.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal3) {
+    modal3.style.display = "none";
+  } 
+}
+
+
+</script>
+</body>
+</html>

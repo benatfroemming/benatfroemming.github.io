@@ -1,0 +1,189 @@
+body {
+    font-family: sans-serif;
+    width: 100%;
+    height: 90vh;
+    background-color: #2a2d35;
+    display: flex;
+    overflow-x: hidden;
+}
+
+.arrow1{
+    color: white;
+    font-size: 3.5em;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    margin: 179px 0 0 -140px;
+    padding-left: 5px;
+}
+
+@media(hover: hover) and (pointer: fine) {
+    .arrow1:hover {
+        border: solid grey;
+    }
+}
+
+.arrow2{
+    color: white;
+    font-size: 3.5em;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    margin: 179px 0 0 105px;
+    padding-right: 5px;
+    padding-left: 2px;
+}
+
+@media(hover: hover) and (pointer: fine) {
+    .arrow2:hover {
+        border: solid grey;
+    }
+}
+
+.arrow1.hide {
+    visibility: hidden;
+}
+
+.arrow2.hide {
+    visibility: hidden;
+}
+
+.home {
+    width: 80px;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    margin: 190px 0 0 -90px;
+    padding: 10px;
+    border-radius: 1em;
+    box-shadow: 0 0 5px rgb(0, 0, 0, 0.2);
+    border: 2px transparent solid;
+    background-color: white;
+    color: black;
+}
+
+.home:hover {
+    cursor: pointer;
+    box-shadow: 0 0 0.8em #26489a;
+    border: 2px #26489a solid;
+}
+
+.start {
+    width: 80px;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    margin: 190px 0 0 10px;
+    padding: 10px;
+    border-radius: 1em;
+    box-shadow: 0 0 5px rgb(0, 0, 0, 0.2);
+    border: 2px transparent solid;
+    background-color: white;
+    color: black;
+}
+
+@media(hover: hover) and (pointer: fine){
+    .start:hover {
+        box-shadow: 0 0 0.8em #26489a;
+        border: 2px #26489a solid;
+    }
+}
+
+.card {
+    width: 310px;
+    height: 400px;
+    perspective: 1000px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -240px 0 0 -155px;
+}
+
+.card_inner {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    position: relative;
+}
+
+.card_inner.is-flipped {
+    transform: rotateY(180deg);
+}
+
+.card_inner.is-flipped1 {
+    transform: rotate3d(0,0,0,0);
+}
+
+.image {
+    box-shadow: 0 0 5px rgb(0, 0, 0, 0.4);
+}
+
+.image2 {
+    position: fixed;
+    margin:60px 0 0 -95px;
+}
+
+.face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    overflow: hidden;
+    border-radius: 3em;
+    box-shadow: 0px 3px 18px 3px rgb(0, 0, 0, 1);
+}
+
+.face--front{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.face--back {
+    background-color: white;
+    transform: rotateY(180deg);
+}
+
+.content {
+    padding: 25px;
+    text-align: center;
+}
+
+.content h1 {
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+.info{
+    text-align: left;
+    width: 250px;
+}
+
+.info p {
+    margin-bottom: 3px;
+    font-size: 15px;
+    color: black;
+}
+
+.info sup{
+    font-size: 10px;
+}
+
+.info a{
+    font-size: 12px;
+    color: rgb(61, 61, 61);
+    margin: 5px;
+}
+
+
+
+
+

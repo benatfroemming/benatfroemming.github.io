@@ -1,0 +1,324 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background: #23242a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 110vh;
+    overflow-y: auto;
+}
+
+.content {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow: visible;
+}
+
+.content h1 {
+    margin-top: 5%;
+    font-size: 50px;
+    max-width: 90%;
+}
+
+.intro p {
+    color: white;
+    font-weight: 50;
+    max-width: 40em;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.intro a {
+    color: rgb(0, 183, 255);
+}
+
+/* Dropdown 1 */
+
+.dropdown{
+    position: relative;
+    margin: 1em;
+    width: 15em;
+    display: inline-block;
+}
+
+.select{
+    background: #2a2f3b;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px #2a2f3b solid;
+    border-radius: 0.5em;
+    padding: 1em;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#overlay {
+    z-index: 2;
+}
+
+.select-clicked{
+    border: 2px #26489a solid;
+    box-shadow: 0 0 0.8em #26489a;
+}
+
+.select:hover {
+    background: #323741;
+}
+
+.caret{
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #fff;
+    transition: 0.3s;
+}
+
+.caret-rotate {
+    transform: rotate(180deg);
+}
+
+.menu {
+    list-style: none;
+    padding: 0.2em 0.5em;
+    background: #323741;
+    border: 1px #363a43 solid;
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+    border-radius: 0.5em;
+    color: #9fa5b5;
+    position: absolute;
+    top: 3em;
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%);
+    opacity: 0;
+    display: none;
+    transition: 0.2s;
+    z-index: 1;
+}
+
+
+.menu li {
+    padding: 0.7em 0.5em;
+    margin: 0.3em 0;
+    border-radius: 0.5em;
+    cursor: pointer;
+}
+
+.menu li:hover {
+    background-color: #2a2d35;
+}
+
+.active {
+    background: #23242a;
+}
+
+.menu-open{
+    display: block;
+    opacity: 1;
+}
+
+/* Dropdown 2 */
+
+.dropdown1{
+    position: relative;
+    margin: 1em;
+    width: 15em;
+    display: inline-block;
+}
+
+.select1{
+    background: #2a2f3b;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px #2a2f3b solid;
+    border-radius: 0.5em;
+    padding: 1em;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.select1-clicked{
+    border: 2px #26489a solid;
+    box-shadow: 0 0 0.8em #26489a;
+}
+
+.select1:hover {
+    background: #323741;
+}
+
+.caret1{
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #fff;
+    transition: 0.3s;
+}
+
+.caret1-rotate {
+    transform: rotate(180deg);
+}
+
+.menu1 {
+    list-style: none;
+    padding: 0.2em 0.5em;
+    background: #323741;
+    border: 1px #363a43 solid;
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+    border-radius: 0.5em;
+    color: #9fa5b5;
+    position: absolute;
+    top: 3em;
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%);
+    opacity: 0;
+    display: none;
+    transition: 0.2s;
+    z-index: 1;
+}
+
+
+.menu1 li {
+    padding: 0.7em 0.5em;
+    margin: 0.3em 0;
+    border-radius: 0.5em;
+    cursor: pointer;
+}
+
+.menu1 li:hover {
+    background-color: #2a2d35;
+}
+
+.active1 {
+    background: #23242a;
+}
+
+.menu1-open{
+    display: block;
+    opacity: 1;
+}
+
+/* Start Button */
+
+.button1 {
+    margin-top: 30px;
+    padding: 10px 35px;
+    border-radius: 2em;
+    background-color: #2a2f3b;
+    box-shadow: 0 0 5px rgb(0, 0, 0, 0.2);
+    border: 2px transparent;
+    color: white;
+    border: none;
+}
+
+.button1:hover{
+    cursor: pointer;
+    background: #323741;
+}
+
+
+/* Settings button */
+
+
+.settings1 {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2em transparent;
+    background-color: #2a2f3b;
+    box-shadow: 0 0 5px rgb(0, 0, 0, 0.2);
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    font-size: 20px;
+    color: white;
+    margin: 100px 10px 10px 10px;
+}
+
+.settings1 {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2em transparent;
+    background-color: #2a2f3b;
+    box-shadow: 0 0 5px rgb(0, 0, 0, 0.2);
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    font-size: 20px;
+    color: white;
+    margin: 150px 10px 60px 10px;
+}
+
+.settings2 {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2em transparent;
+    background-color: #2a2f3b;
+    box-shadow: 0 0 5px rgb(0, 0, 0, 0.2);
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    font-size: 20px;
+    color: white;
+    margin: 150px 10px 60px 10px;
+}
+
+.settings3 {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2em transparent;
+    background-color: #2a2f3b;
+    box-shadow: 0 0 5px rgb(0, 0, 0, 0.2);
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    font-size: 20px;
+    color: white;
+    margin: 150px 10px 60px 10px;
+}
+
+.settings1:hover {
+    cursor: pointer;
+    background: #323741;
+}
+
+.settings2:hover {
+    cursor: pointer;
+    background: #323741;
+}
+
+.settings3:hover {
+    cursor: pointer;
+    background: #323741;
+}
+ 
+.bottom-nav {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    color: #555a64;
+}
+
+.bottom-nav p {
+    text-align: center;
+    font-size: 10px;
+}

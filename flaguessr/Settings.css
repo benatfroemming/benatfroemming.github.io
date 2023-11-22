@@ -1,0 +1,97 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background: #23242a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    overflow: auto;
+}
+
+/*exit button*/
+
+.content1 {
+    width: 100%;
+    height: auto;
+    top: 0;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    display: inline-flex;
+}
+
+.exit {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2em transparent;
+    background-color: #2a2f3b;
+    box-shadow: 0 0 5px rgb(0, 0, 0, 0.6);
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    font-size: 20px;
+    color: white; 
+}
+
+.exit:hover {
+    cursor: pointer;
+    box-shadow: 0 0 0.8em #26489a;
+    border: 2px #26489a solid;
+}
+
+
+/*Accordions*/
+
+.accordion {
+    width: 600px;
+    margin-top: 100px;
+}
+
+.accordion .contentBx {
+    /* position: relative; */
+    margin: 15px 25px;
+}
+
+.accordion .contentBx .label {
+    position: relative;
+    padding: 20px;
+    background: #2a2f3b;
+    color: white;
+    cursor: pointer;
+}
+
+.accordion .contentBx .label::before {
+    content: '+';
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    transform: rotateY(-50%);
+    font-size: 1em;
+}
+
+.accordion .contentBx.active .label::before {
+    content: '-';
+}
+
+.accordion .contentBx .content {
+    position: relative;
+    background: #fff;
+    height: 0;
+    overflow: hidden;
+    transition: 0s;
+    overflow-y: auto;
+}
+
+.accordion .contentBx.active .content {
+    height: auto;
+    padding: 25px;
+}
+
+.accordion .contentBx.active .content a {
+    display: flex;
+    margin-top: 10px;
+}

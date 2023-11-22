@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>Vector Tiles in Leaflet JS</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.8.0/leaflet.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.8.0/leaflet.css" />
+    <link href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css" rel='stylesheet' />
+    <script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js"></script>
+    <script src="https://unpkg.com/@maplibre/maplibre-gl-leaflet@0.0.17/leaflet-maplibre-gl.js"></script>
+    <script src="https://kit.fontawesome.com/d8dc0d9035.js" crossorigin="anonymous"></script>
+    <style>
+      body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  /* background-color: #222; */
+}
+
+.map-container {
+  position: absolute;
+  width: 90vw;
+  height: 70vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+  display: flex;
+  flex-direction: column;
+}
+
+#map {
+  width: 100%;
+  height: 80%;
+  z-index: 1;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+@media screen and (min-width: 768px) {
+  .map-container {
+    width: 90vh;
+    height: 70vh;
+  }
+}
+
+.mapboxgl-ctrl-attrib-inner {
+  display: none;
+}
+
+.country-info {
+  /* background-color: #3f3f3f; */
+  position: relative;
+  max-height: 20%;
+  margin: 0;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  /* color: white; */
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.country-text {
+  height: 100%;
+  width: 60%;
+  padding-left: 50px;
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 700px) {
+  .country-text {
+    position: relative;
+    padding-top: 0px;
+    width: 50%;
+    padding-left: 30px;
+  }
+}
+
+#country {
+  font-family: Arial, sans-serif;
+  font-size: 24px;
+  text-align: left;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@media screen and (max-width: 700px) {
+  #country {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  #country {
+    font-size: 16px;
+  }
+}
+
+#country:hover{
+  color: rgb(102, 0, 255);
+}
+
+.country-flag {
+  height: 100%;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+ 
+@media screen and (max-width: 700px) {
+  .country-flag {
+    width: 50%;
+  }
+}
+
+#flag{
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+  visibility: hidden;
+}
+
+#inf {
+  color: rgb(255, 255, 255);
+  opacity: 0.8;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  text-shadow: 0 0 2px #000;
+  font-size: 18px;
+}
+
+#inf.fa-circle-info:hover {
+  opacity: 1;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal1 {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #888;
+  position: absolute;
+  width: 400px;
+  height: 60%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow-y: auto;
+  padding-top: 45px;
+}
+
+.modal-content1 {
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #888;
+  position: absolute;
+  width: 400px;
+  height: 60%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow-y: auto;
+  padding-top: 45px;
+}
+
+@media screen and (max-width: 700px) {
+  .modal-content {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .modal-content1 {
+    width: 60%;
+  }
+}
+
+/* The Close Button */
+.close {
+  color: rgb(126, 126, 126);
+  opacity: 0.8;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 32px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.close1 {
+  color: rgb(126, 126, 126);
+  opacity: 0.8;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 32px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.modal-content p {
+  margin-top: 0;
+  align-self: flex-start;
+  font-family: Arial, sans-serif;
+  font-size: 12px;;
+}
+
+.modal-content1 p {
+  margin-top: 0;
+  align-self: flex-start;
+  font-family: Arial, sans-serif;
+  font-size: 12px;;
+}
+
+.close:hover,
+.close:focus {
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.close1:hover,
+.close1:focus {
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.preview-text {
+  display: flex; /* display the elements in a flex container */
+  flex-wrap: nowrap; /* prevent elements from wrapping to the next line */
+  align-items: column;
+  padding-top: 10px;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+}
+
+.title{
+  font-family: Arial, sans-serif;
+  margin-left: 30px;
+  margin-right: 30px;
+  font-size: 24px;
+}
+
+@media screen and (max-width: 700px) {
+  .title{
+  margin-left: 15px;
+  margin-right: 15px;
+  font-size: 20px;
+}
+}
+
+.preview-text a {
+  margin-left: 30px; /* adds spacing between elements */
+  margin-right: 30px;
+  line-height: 1.3;
+}
+
+@media screen and (max-width: 700px) {
+  .preview-text a {
+  margin-left: 15px; /* adds spacing between elements */
+  margin-right: 15px;
+}
+}
+
+.fa-circle-check {
+  margin-left: 5px;
+  font-size: 16px;
+  color: rgb(28, 197, 28);
+}
+
+@media screen and (max-width: 700px) {
+  .fa-circle-check {
+  font-size: 14px;
+}
+}
+
+.fa-circle-xmark {
+  margin-left: 5px;
+  font-size: 16px;
+  color: rgb(255, 0, 0);
+}
+
+@media screen and (max-width: 700px) {
+  .fa-circle-xmark {
+  font-size: 14px;
+}
+}
+
+
+.flag2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  padding-top: 30px;
+}
+
+#flag2{
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+    </style>
+    <script>
+      function initialize() {
+        var earth = new WE.map('earth_div');
+        WE.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+          attribution: '© OpenStreetMap contributors'
+        }).addTo(earth);
+      }
+    </script>    
+  </head>
+  <body onload="initialize()">
+    <div class="map-container">
+      <i id="inf" class="fa-solid fa-circle-info"></i>
+      <div id="map"></div>
+      <div class="country-info">
+        <div class="country-text">
+          <a id="country">Select a territory to start!</a>
+        </div>
+        <div class="country-flag">
+          <img id="flag" src="https://flagcdn.com/h80/@.png" srcset="https://flagcdn.com/h120/@.png 2x" height="80">
+        </div>
+      </div>
+    </div>
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Some text in the Modal..</p>
+      </div>
+    </div> 
+    
+    <div id="myModal1" class="modal1">
+  <div class="modal-content1">
+    <span class="close1">&times;</span>
+    <p class="full-data">
+      <h1 class="title"></h1>
+      <div id="Independent" class="preview-text"></div>
+      <div id="ISO" class="preview-text"></div>  
+      <div id="Continent" class="preview-text"></div>  
+      <div id="Capital" class="preview-text"></div>  
+      <div id="flagData" class="preview-text"></div>
+      <div class="flag2">
+        <img id="flag2" src="https://flagcdn.com/h80/es.png" srcset="https://flagcdn.com/h120/es.png 2x" height="80">
+      </div>
+      <div id="countryInfo" class="preview-text"></div>   
+      <div id="mapLink" class="preview-text"></div>  
+      <div id="wikiLink" class="preview-text"></div>    
+      <div class="preview-text"><br> </br></div> 
+    </p>
+  </div>
+</div>
+    
+    
+<script>
+      var currentCountry = "@.png"; 
+      const key = 'w473S9xJGrpxxjDc5tA1';
+      const map = L.map('map', {
+        maxBounds: L.latLngBounds(L.latLng(-90, -180), L.latLng(90, 180)),
+        maxBoundsViscosity: 1.0,
+        minZoom: 1.6,
+        maxZoom: 18,
+
+      }).setView([40, -10], 1.5);
+      const gl = L.maplibreGL({
+        attribution: "\u003ca href=\"https://www.maptiler.com/copyright/\" target=\"_blank\"\u003e\u0026copy; MapTiler\u003c/a\u003e \u003ca href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\"\u003e\u0026copy; OpenStreetMap contributors\u003c/a\u003e",
+        style: `https://api.maptiler.com/maps/c250f461-7166-416c-a59d-76dae10ed60f/style.json?key=w473S9xJGrpxxjDc5tA1`
+      }).addTo(map);
+
+      var countriesLayer = L.geoJSON(null, {
+    onEachFeature: onEachFeature,
+    style: {
+        fillOpacity: 0.5,
+        weight: 0,
+        color: 'transparent'
+    }
+    
+}).addTo(map);
+
+fetch('https://raw.githubusercontent.com/benatfroemming/countries/main/countries.geojson')
+    .then(response => response.json())
+    .then(data => {
+      const countries = data.features.map(feature => feature.properties.ADMIN);
+        console.log(countries);
+        countriesLayer.addData(data);
+        countriesLayer.setStyle({
+            fillOpacity: 0.5,
+            weight: 0,
+            color: 'transparent'
+        });
+    });
+
+countriesLayer.on('mouseover', function (event) {
+    event.layer.setStyle({
+        fillOpacity: 0.4,
+        weight: 1,
+        color: 'black'
+    });
+});
+ 
+countriesLayer.on('mouseout', function (event) {
+    countriesLayer.setStyle({
+        fillOpacity: 0.5,
+        weight: 0,
+        color: 'transparent'
+    });
+});
+
+const flagImg = document.getElementById("flag");
+const flagImg2 = document.getElementById("flag2");
+var widthAdjusted = false;
+function onEachFeature(feature, layer) {
+  layer.on('click', function (e) {
+    flagImg.style.visibility = "visible";
+    var countryName = e.target.feature.properties.ADMIN;
+    var iso2 = e.target.feature.properties.ISO_A2.toLowerCase();
+    var countryISO2 = iso2 + ".png";
+    document.getElementById('country').innerHTML = `${countryName}`;
+    flagImg.src = flagImg.src.replace(currentCountry, countryISO2);
+    flagImg.srcset = flagImg.srcset.replace(currentCountry, countryISO2);
+    currentCountry = countryISO2;
+
+    // Assume the selected ISO2 code is stored in a variable called `iso2`
+// Load the JSON file
+// fetch("https://raw.githubusercontent.com/benatfroemming/countryData/main/countries.json")
+fetch("countries.json")
+  .then(response => response.json())
+  .then(data => {
+    // Find the object in the array that matches the selected ISO2 code
+    const countryData = data.countries.find(countryData => countryData.name === iso2);
+    
+    // Update the HTML elements with the country data
+    if (countryData.independent === true){
+      document.getElementById("Independent").innerHTML = `<a><strong>Independent:</strong><i class="fa-solid fa-circle-check"></i></a>`;
+    }else{
+      document.getElementById("Independent").innerHTML = `<a><strong>Independent:</strong><i class="fa-solid fa-circle-xmark"></i></a>`;
+
+    }
+    
+    document.getElementById("ISO").innerHTML = `<a><strong>ISO:</strong>&emsp;${countryData.ISO}</a>`;
+    document.getElementById("Continent").innerHTML = `<a><strong>Continent:</strong>&emsp;${countryData.Continent}</a>`;
+    document.getElementById("Capital").innerHTML = `<a><strong>Capital:</strong>&emsp;${countryData.Capital}</a>`;
+    document.getElementById("flagData").innerHTML = `<a>${countryData.flag}</a>`;
+    document.getElementById("flag2").src = flagImg.src;
+    document.getElementById("flag2").srcset = flagImg.srcset;
+    document.getElementById("countryInfo").innerHTML = `<a>${countryData.description}</a>`;
+    document.getElementById("mapLink").innerHTML = `<a target="_blank" href="${countryData.mapLink}">Google Maps</a>`;
+    document.getElementById("wikiLink").innerHTML = `<a target="_blank" href="${countryData.wikiLink}">Wikipedia</a>`;
+ });
+
+  })
+}
+
+
+const flagCon = document.querySelector(".country-flag");
+const textCon = document.querySelector(".country-text");
+
+function adjustFlagSize() {
+  if (window.innerWidth < 500) {
+    flagImg.height = 50;
+    flagImg2.height = 54;
+  }else if (window.innerWidth < 720) {
+    flagImg.height = 60;
+    flagImg2.height = 70;
+  } else {
+    flagImg.height = 70;
+    flagImg2.height = 80;
+  }
+}
+
+// Call the function when the page loads and whenever the window is resized
+window.addEventListener("load", adjustFlagSize);
+window.addEventListener("resize", adjustFlagSize);
+
+
+
+// Info pop up
+var modal = document.getElementById("myModal");
+var btn = document.getElementById('inf');
+var span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// Read more pop up
+var modal1 = document.getElementById("myModal1");
+var fullData1 = document.querySelector(".title");
+var country = document.getElementById('country');
+var span1 = document.getElementsByClassName("close1")[0];
+
+country.onclick = function() {
+  fullData1.innerHTML = country.innerHTML;
+  modal1.style.display = "block";
+  var modalContent = document.querySelector(".modal-content1");
+  modalContent.scrollTop = 0;
+}
+
+span1.onclick = function() {
+  modal1.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal1) {
+    modal1.style.display = "none";
+  } else if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+
+
+</script>
+</body>
+</html>
