@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" href="/img/favicon.jpg" type="image/png">
     <title>Your Portfolio</title>
+    <script>
+        function showResumeAlert() {
+            alert("Please contact the owner for the updated resume.");
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -30,7 +35,7 @@
         </ul>
     </nav>
     <div class="resume">
-        <a href="/docs/My_Resume.pdf" download class="btn"><i class="fas fa-download"></i> Download Resume</a>
+        <a href="#" onclick="showResumeAlert()" class="btn"><i class="fas fa-download"></i> Download Resume</a>
     </div>
 </body>
 </html>
