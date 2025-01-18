@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: white;
+            color: #333;
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px 0;
+            /* border-bottom: 2px solid #ccc; */
+        }
+
+        header h1 {
+            font-size: 2.5em;
+        }
+
+        nav {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        nav ul {
+            display: inline-flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #000000;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        section h2 {
+            color: #000000;
+            margin-bottom: 10px;
+        }
+
+        #about div{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        #about img {
+            max-width: 100px;
+            margin: 20px 50px 20px;
+            border-radius: 10px;
+        }
+
+        #about p {
+            flex: 1;
+        }
+
+        @media (max-width: 600px) {
+            #about div{
+                flex-direction: column;
+            }
+        }
+
+        .download-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .download-buttons .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #0073e6;
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .download-buttons .btn:hover {
+            background-color: #005bb5;
+        }
+
+
+        .education {
+            display: flex;
+            align-items: center;
+            /* border: 2px solid #ccc; */
+            padding: 20px;
+            margin: 20px auto;
+            max-width: auto;
+            border-radius: 10px;
+        }
+
+        .education img {
+            max-width: 120px;
+            height: auto;
+            margin-right: 15px;
+        }
+
+        .education-content {
+            text-align: left;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px; /* Adds space between tags */
+        }
+
+        .skills div {
+            padding: 10px 15px; /* Makes the tags more prominent */
+            border-radius: 10px; /* Rounded edges for a tag-like look */
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            color: #fff; /* Text color */
+            cursor: default; /* Indicates the tags are non-clickable */
+        }
+
+        /* Diverse colors for tags */
+        .skills div:nth-child(1) { background-color: #4caf50; } /* Green */
+        .skills div:nth-child(2) { background-color: #2196f3; } /* Blue */
+        .skills div:nth-child(3) { background-color: #ff5722; } /* Orange */
+        .skills div:nth-child(4) { background-color: #9c27b0; } /* Purple */
+        .skills div:nth-child(5) { background-color: #ffeb3b; color: #000; } /* Yellow */
+        .skills div:nth-child(6) { background-color: #e91e63; } /* Pink */
+        .skills div:nth-child(7) { background-color: #4ce400; } /* Brown */
+        .skills div:nth-child(8) { background-color: #00bcd4; } /* Cyan */
+        .skills div:nth-child(9) { background-color: #e37cde; } /* Blue Gray */
+        .skills div:nth-child(10) { background-color: #f44336; } /* Red */
+
+        /* Ensure consistent spacing */
+        .skills div {
+            margin: 5px;
+            flex: 0 1 auto; /* Adjust width based on content */
+        }
+
+        .experience {
+            display: flex;
+            align-items: center;
+            /* border: 2px solid #ccc; */
+            padding: 20px;
+            margin: 20px auto;
+            max-width: auto;
+            border-radius: 10px;
+        }
+
+        .experience img {
+            max-width: 120px;
+            height: auto;
+            margin-right: 15px;
+        }
+
+        .experience-content {
+            text-align: left;
+        }
+
+        #car {
+            display: flex;
+            justify-content: center; /* Horizontally center */
+            align-items: center;    /* Vertically center */
+            width: 100%;            /* Full width of the viewport */
+            flex-direction: column; /* Stack children vertically, if needed */
+        }
+
+        #car img {
+            width: 400px;
+            max-width: 80%; /* Ensures image doesn't overflow on smaller screens */
+            margin: 30px auto 20px;
+        }
+
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            border-top: 2px solid #ccc;
+            margin-top: 40px;
+        }
+
+        footer a {
+            color: #0073e6;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .dark-mode {
+            background-color: #333;
+            color: #f9f9f9;
+        }
+
+        .dark-mode h2 {
+            color: #f9f9f9;
+        }
+
+        .dark-mode header, .dark-mode footer {
+            border-color: #555;
+        }
+
+        .dark-mode nav ul li a {
+            color: #00bfff;
+        }
+
+        .dark-mode nav ul li a:hover {
+            color: #80dfff;
+        }
+
+        .dark-mode .skills div {
+            border-color: #555;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px; /* Adjust padding for a circular shape */
+            background: none; /* Changed background to white */
+            color: black; /* Changed text color (icon color) to black */
+            border: none;
+            border-radius: 50%; /* Makes the button circular */
+            cursor: pointer;
+            font-size: 1.5em; /* Adjusted font size for better visibility */
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Centers the icon inside the button */
+            width: 30px; /* Width and height set to make it circular */
+            height: 30px;
+        }
+
+        .theme-toggle:hover{
+            color: #ccc;
+        }
+
+        .theme-toggle i {
+            margin: 0; /* Ensures the icon is centered */
+            color: black; /* Ensures the icon color is black */
+        }
+
+        #projects div {
+            margin: 20px auto 0;
+        }
+
+        .contact-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .contact-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1em;
+            font-weight: bold;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .contact-button i {
+            margin-right: 8px;
+            font-size: 1.2em;
+        }
+
+        /* Specific Colors for Each Button */
+        .contact-button.email {
+            background-color: #EA4335;
+            border: none;
+        }
+
+        .contact-button.github {
+            background-color: #333333;
+            border: none;
+        }
+
+        .contact-button.linkedin {
+            background-color: #0077B5;
+            border: none;
+        }
+
+        .contact-button.discord {
+            background-color: #5865F2;
+            border: none;
+        }
+
+        .contact-button.instagram {
+            background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF);
+            border: none;
+        }
+
+        .contact-button.scholar {
+            background: #4ce400;
+            border: none;
+        }
+
+        /* Hover Effects */
+        .contact-button:hover {
+            filter: brightness(1.2);
+            transform: scale(1.05);
+        }
+
+       
+
+
+    </style>
+</head>
+<body>
+
+    <button class="theme-toggle">
+        <i class="fa fa-sun" id="sun-icon" style="display: none; color: white;" ></i>
+        <i class="fa fa-moon" id="moon-icon" style="color: black;"></i>
+    </button>
+    
+
+    <header>
+        <h1>Beñat Froemming Aldanondo</h1>
+    </header>
+
+    <section id="downloads">
+        <div class="download-buttons">
+            <a href="docs/resume.pdf" download="Resume_Benat_Froemming" class="btn">Download Resume</a>
+            <a href="docs/cover_letter.pdf" download="Cover_Letter_Benat_Froemming" class="btn">Download Cover Letter</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <div>
+            <p>I'm a senior at the University of Minnesota Twin Cities majoring in Data Science through the College of Science and Engineering Computer Science Department. My goal is to apply my software engineering and data science knowledge to solve real-world problems while making a positive impact. I will pursue a master's degree following my graduation.</p>
+            <img src="img/profile.jpg">
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <div class="education">
+                <img src="img/umn-logo.gif" alt="University Logo">
+                <div class="education-content">
+                    <h3>University of Minnesota</h3>
+                    <p>Bachelor's in Data Science, Computer Science & Engineering Department</p>
+                    <p>September 2021 - May 2025</p>
+                    <p>GPA: 3.761 / 4.0</p>
+                </div>
+            </div>
+
+            <div class="education">
+                <img src="img/umn-logo.gif" alt="University Image">
+                <div class="education-content">
+                    <h3>University of Minnesota</h3>
+                    <p>Masters's in Computer Science, Computer Science & Engineering Department</p>
+                    <p>September 2025 - 2026</p>
+                    <p>Unstarted</p>
+                </div>
+            </div>
+            <p> Relevant Courses: Software Engineering, Data Structures & Algorithms, Computer and Database Systems, Machine Learning Fundaments, Linear Algebra, Intro to AI, Data Mining, Optimization, Deep Learning, Natural Language Processing, and Computer Vision.</p>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skills">
+                <div>Python</div>
+                <div>Java</div>
+                <div>C/C++</div>
+                <div>SQL</div>
+                <div>ROS</div>
+                <div>OpenCV</div>
+                <div>Machine Learning (ML)</div>
+                <div>PyTorch</div>
+                <div>Linux</div>
+                <div>Github</div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Experience</h2>
+            
+            <div class="experience">
+                <img src="img/mri.png" alt="University Image">
+                <div class="experience-content">
+                    <h3>Undergraduate Research Intern</h3>
+                    <p>Minnesota Robotics Institute</p>
+                    <p>Minneapolis, MN</p>
+                    <p>September 2024 - December 2024</p>
+                </div>
+            </div>
+            <li>Developed an object-oriented simulation framework in Python to evaluate multi-agent vehicle coordination algorithms.</li>
+            <li>Designed and implemented a novel deep reinforcement learning algorithm in PyTorch, achieving a 21% increase in traffic capacity.</li>
+            <li>I will present the project at the upcoming AAAI 2025 conference at the MALTA workshop.</li>
+
+            <div class="experience">
+                <img src="img/nsf.png" alt="University Image">
+                <div class="experience-content">
+                    <h3>Research Intern</h3>
+                    <p>National Science Foundation - Lawrence Tech University & Michigan State University</p>
+                    <p>Detroit, MI</p>
+                    <p>May 2024 - August 2024</p>
+                </div>
+            </div>
+            <li>Designed, deployed, and validated lane-following and adaptive speed algorithms on real vehicles using C++ with ROS, reducing acceleration and braking at intersections by up to 75.35% compared to human drivers.</li>
+            <li>Developed novel vision-based lane-following algorithms in Python utilizing OpenCV, unsupervised clustering techniques, and deep learning models for enhanced performance.</li>
+            <li>Collaborated with a team of research interns, leading development efforts and managing version control with GitHub, resulting in a successful submission to a top-tier conference.</li>
+            <li>Built a cost-effective roadside unit using a Raspberry Pi (Linux Ubuntu) and Arduino for vehicle-to-everything (V2X) communication.</li>
+            <div id="car">
+                <img src="img/reu.png">
+            </div>
+
+            
+        </section>
+
+        <section id="projects">
+            <div>
+                <h2>Projects</h2>
+                <h3>Motion & Mapping Lead, Micro Mouse Robot, IEEE Club</h3>
+                <p>October 2024 - Present</p>
+                <li>Building an autonomous robot from scratch using a microcontroller, motors, and sensors for maze traversal.</li>
+                <li>Developing and optimizing pathfinding algorithms (Dijkstra’s, A*, DFS, Floodfill) for autonomous maze-solving, both in simulation and on the real robot using Python and C++.</li>
+            </div>
+            <div>
+                <h3>Backend Lead, Major Planner Project, Social Coding Club</h3>
+                <p>January 2024 - May 2024</p>
+                <li>Developed a webapplication using Python and Flask to assist students in identifying the optimal majors based on their preferences.</li>
+                <li>Extracted data from the university’s database in JSON format and implemented a robust data cleaning pipelines in Python.</li>
+                <li>Created a custom recommendation algorithm to provide tailored suggestions for students.</li>
+            </div>
+            <div>
+                <h3>Flag Guessing Web App</h3>
+                <p>December 2022 - Present</p>
+                <li>Designed and developed an interactive educational website for learning world flags using HTML, CSS, and JavaScript, reaching 1000+ users.</li>
+            </div>
+            <div>
+                <h3>Course Projects</h3>
+                <p>September 2021 - Present</p>
+                <li>Implemented a feed-forward neural network with backpropagation from scratch in Python, utilizing Numpy, Pandas, and Matplotlib to classify handwritten digits from the MNIST dataset, achieving 92% accuracy on test data.</li>
+                <li>Developed the Wordle game in Java, adhering to object-oriented programming principles and providing a user-friendly interface.</li>
+                <li>Conducted exploratory data analysis using R in R-Studio and Python in Jupyter Notebooks on the COVID-19 dataset from the World Health Organization. Implemented supervised and unsupervised machine learning models using libraries like Scikit-Learn to predict propagation trends.</li>
+                <li>Extracted key insights about a flight network using SQL and PostgreSQL, enhancing operational efficiency as part of an air control system and optimizing route networks and pricing strategies using Julia.</li>
+                <li>Understood and modified PostgreSQL’s backend in C to implement a custom buffer replacement policy.</li>
+                <li>Designed and implemented a heuristic algorithm based on A* to solve the coverage path planning problem, achieving optimal results significantly faster than exhaustive search methods.</li>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <div class="contact-buttons">
+                <a href="mailto:froem076@umn.edu" class="contact-button email">
+                    <i class="fas fa-envelope"></i> Email
+                </a>
+                <a href="https://github.com/benatfroemming" class="contact-button github" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://linkedin.com/in/benatfroemming" class="contact-button linkedin" target="_blank">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="https://discordapp.com/users/benatfroemming" class="contact-button discord" target="_blank">
+                    <i class="fab fa-discord"></i> Discord
+                </a>
+                <a href="https://instagram.com/benatfroemming" class="contact-button instagram" target="_blank">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+                <a href="https://scholar.google.com/citations?user=4PRaQcwAAAAJ&hl=en&oi=ao" class="contact-button scholar" target="_blank">
+                    <i class="fas fa-graduation-cap"></i> Google Scholar
+                </a>
+                
+            </div>
+        </section>      
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Beñat Froemming-Aldanondo. All rights reserved.</p>
+    </footer>
+
+    <script src="confetti/confetti.js"></script>
+    <script>
+
+        // dark mode
+        const themeToggle = document.querySelector('.theme-toggle');
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+
+        const themeToggleButton = document.querySelector('.theme-toggle');
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+
+        themeToggleButton.addEventListener('click', () => {
+            if (sunIcon.style.display === 'none') {
+                sunIcon.style.display = 'inline';  // Show the sun icon
+                moonIcon.style.display = 'none';   // Hide the moon icon
+            } else {
+                sunIcon.style.display = 'none';    // Hide the sun icon
+                moonIcon.style.display = 'inline'; // Show the moon icon
+            }
+        });
+
+        // confetti
+        const startConfetti = () => {
+            setTimeout(() => {
+                confetti.start(); 
+            }, 500);
+        };
+
+        const stopConfetti = () => {
+            setTimeout(() => {
+                confetti.stop(); 
+            }, 3000);
+        };
+
+        const download_buttons = document.querySelectorAll('.btn');
+
+        download_buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                startConfetti();
+                stopConfetti();
+            });
+        });
+
+
+    </script>
+</body>
+</html>
+
