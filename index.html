@@ -168,6 +168,33 @@
             flex: 0 1 auto; /* Adjust width based on content */
         }
 
+        .languages {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px; /* Adds space between tags */
+        }
+
+        .languages div {
+            padding: 10px 15px; /* Makes the tags more prominent */
+            border-radius: 10px; /* Rounded edges for a tag-like look */
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            color: #fff; /* Text color */
+            cursor: default; /* Indicates the tags are non-clickable */
+        }
+
+        /* Diverse colors for tags */
+        .languages div:nth-child(1) { background-color: #2354cf; } /* Green */
+        .languages div:nth-child(2) { background-color: #e52323; } /* Blue */
+        .languages div:nth-child(3) { background-color: #0eb11e; } /* Orange */
+
+        /* Ensure consistent spacing */
+        .languages div {
+            margin: 5px;
+            flex: 0 1 auto; /* Adjust width based on content */
+        }
+
         .experience {
             display: flex;
             align-items: center;
@@ -408,6 +435,15 @@
                 <div>PyTorch</div>
                 <div>Linux</div>
                 <div>Github</div>
+            </div>
+        </section>
+
+        <section id="languages">
+            <h2>Languages</h2>
+            <div class="languages">
+                <div>Basque</div>
+                <div>English</div>
+                <div>Spanish</div>
             </div>
         </section>
 
