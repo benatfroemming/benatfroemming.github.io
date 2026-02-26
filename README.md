@@ -5,3 +5,7 @@ Test
 - Two
 - Three
 [Education](./education.md)
+
+```python
+print('Hello World')
+```
