@@ -24,7 +24,7 @@ My goal is to make a meaningful impact through my work, and I am passionate abou
 Software Engineering · Data Structures & Algorithms · Computer Systems & Databases · Project Management · Machine Learning · Robotics · Artificial Intelligence · Computer Vision · Natural Language Processing · Recommender Systems · Deep Learning · Data Analytics · Geocomputing
 
 <br><br>
-<img src="./img/umn.png" width="500"/>
+<img src="./img/umn.png" width="300"/>
 
 ---
 
@@ -49,10 +49,9 @@ Bloomington, MN
 - Developed tests using Pandas and Numpy to maintain data consistency across the pipeline and verify correct data publishing
 on CAN trigger events.
 
-<br>
-<img src="./img/toro.png" width="400"/>
+<img src="./img/toro.png" width="300"/>
 
-<br><br>
+<br>
 
 ### **Research Experiences for Undergraduates (REU)**  
 **National Science Foundation (NSF)**  
@@ -63,8 +62,8 @@ Detroit, MI
 - Prototyped a low-cost roadside unit for vehicle-to-infrastructure communication of real-time traffic signal states.
 - Designed and deployed vision-based perception systems on electric vehicles using ROS, OpenCV, and Scikit-Learn.
 
-<br>
 <img src="./img/nsf.png" width="500"/>
+<br>
 
 ---
 
@@ -72,19 +71,14 @@ Detroit, MI
 
 **Programming Languages:**  
 Python · Java · C/C++ · JavaScript · TypeScript  
-
 **Web & Software Development:**  
 React · Next.js · HTML · CSS · Git · GitHub · Azure DevOps · VS Code · PostgreSQL · Supabase · Snowflake  
-
 **Data Analytics & Engineering:**  
 R · SQL · Excel · Power BI · Jupyter Notebook · Pandas · GeoPandas · NumPy · Matplotlib  
-
 **AI & Machine Learning:**  
 Scikit-Learn · PyTorch · OpenCV · Hugging Face · LangChain · XGBoost  
-
 **Geospatial & Systems:**  
 ArcGIS · ROS · Docker · Linux  
-
 **Languages:**  
 English (Proficient) · Spanish (Proficient) · Basque (Proficient)
 
