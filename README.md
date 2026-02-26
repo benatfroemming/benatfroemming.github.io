@@ -1,7 +1,3 @@
----
-layout: default
-layout: default
-
 # Benat Froemming-Aldanondo
 ---
 Test
@@ -13,7 +9,3 @@ Test
 ```python
 print('Hello World')
 ```
-
-<section>
-  `GET /api/osm/map/data`
-</section>
