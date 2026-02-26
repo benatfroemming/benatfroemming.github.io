@@ -15,8 +15,6 @@ My goal is to make a meaningful impact through my work, and I am passionate abou
 *September 2025 – May 2026*  
 **GPA:** 4.0 / 4.0  
 
----
-
 ### **Bachelor of Science in Data Science**  
 **University of Minnesota – Twin Cities**  
 *September 2021 – May 2025*  
