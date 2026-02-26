@@ -24,7 +24,7 @@ My goal is to make a meaningful impact through my work, and I am passionate abou
 Software Engineering · Data Structures & Algorithms · Computer Systems & Databases · Project Management · Machine Learning · Robotics · Artificial Intelligence · Computer Vision · Natural Language Processing · Recommender Systems · Deep Learning · Data Analytics · Geocomputing
 
 <br><br>
-<img src="./umn.png" width="500"/>
+<img src="./img/umn.png" width="500"/>
 
 ---
 
@@ -50,7 +50,7 @@ Bloomington, MN
 on CAN trigger events.
 
 <br><br>
-<img src="./toro.png" width="500"/>
+<img src="./img/toro.png" width="500"/>
 
 ### **Research Experiences for Undergraduates (REU)**  
 **National Science Foundation (NSF)**  
@@ -62,7 +62,7 @@ Detroit, MI
 - Designed and deployed vision-based perception systems on electric vehicles using ROS, OpenCV, and Scikit-Learn.
 
 <br><br>
-<img src="./reu.png" width="500"/>
+<img src="./img/reu.png" width="500"/>
 
 ---
 
