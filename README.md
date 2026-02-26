@@ -10,8 +10,6 @@ My goal is to make a meaningful impact through my work, and I am passionate abou
 
 ## Education
 
-<img src="./umn.png" width="500"/>
-
 ### **Master of Science in Computer Science**  
 **University of Minnesota – Twin Cities**  
 *September 2025 – May 2026*  
@@ -24,6 +22,8 @@ My goal is to make a meaningful impact through my work, and I am passionate abou
 
 **Relevant Coursework:**  
 Software Engineering · Data Structures & Algorithms · Computer Systems & Databases · Project Management · Machine Learning · Robotics · Artificial Intelligence · Computer Vision · Natural Language Processing · Recommender Systems · Deep Learning · Data Analytics · Geocomputing
+
+<img src="./umn.png" width="500"/>
 
 ---
 
