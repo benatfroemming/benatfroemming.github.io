@@ -49,8 +49,10 @@ Bloomington, MN
 - Developed tests using Pandas and Numpy to maintain data consistency across the pipeline and verify correct data publishing
 on CAN trigger events.
 
-<br><br>
+<br>
 <img src="./img/toro.png" width="400"/>
+
+<br><br>
 
 ### **Research Experiences for Undergraduates (REU)**  
 **National Science Foundation (NSF)**  
@@ -61,7 +63,7 @@ Detroit, MI
 - Prototyped a low-cost roadside unit for vehicle-to-infrastructure communication of real-time traffic signal states.
 - Designed and deployed vision-based perception systems on electric vehicles using ROS, OpenCV, and Scikit-Learn.
 
-<br><br>
+<br>
 <img src="./img/nsf.png" width="500"/>
 
 ---
