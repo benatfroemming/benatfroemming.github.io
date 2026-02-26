@@ -23,6 +23,8 @@ My goal is to make a meaningful impact through my work, and I am passionate abou
 **Relevant Coursework:**  
 Software Engineering · Data Structures & Algorithms · Computer Systems & Databases · Project Management · Machine Learning · Robotics · Artificial Intelligence · Computer Vision · Natural Language Processing · Recommender Systems · Deep Learning · Data Analytics · Geocomputing
 
+<img src="[./images/umn-logo.png](https://www.google.com/search?q=umn+computer+science+logo&sca_esv=9e963a6684c14a11&rlz=1C1GCHX_enUS1163US1163&udm=2&biw=1536&bih=799&sxsrf=ANbL-n77uqwAePG8jG3pzBx-sOrsiVvMUA%3A1772074833878&ei=UbefadymNaLw0PEPle_SqAw&ved=0ahUKEwick_SXlfaSAxUiODQIHZW3FMUQ4dUDCBI&uact=5&oq=umn+computer+science+logo&gs_lp=Egtnd3Mtd2l6LWltZyIZdW1uIGNvbXB1dGVyIHNjaWVuY2UgbG9nb0jrGlCNB1jbGXACeACQAQCYAVSgAY4KqgECMTe4AQPIAQD4AQGYAgWgAv4BwgIFEAAYgATCAgYQABgHGB7CAggQABgHGAgYHpgDAIgGAZIHATWgB7gMsgcBM7gH9QHCBwcwLjIuMi4xyAcXgAgA&sclient=gws-wiz-img#sv=CAMSVhoyKhBlLWYtYXkweTVEZUxTYXdNMg5mLWF5MHk1RGVMU2F3TToOT2pHVDlCejZ0ejBEQU0gBCocCgZtb3NhaWMSEGUtZi1heTB5NURlTFNhd00YADABGAcgosDgejACSggQAhgCIAIoAg)" width="50"/>
+
 ---
 
 
