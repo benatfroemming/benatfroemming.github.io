@@ -34,17 +34,17 @@ Software Engineering · Data Structures & Algorithms · Computer Systems & Datab
 ### **Software Engineer**  
 **The Toro Company**  
 Bloomington, MN  
-*September 2025 – Present*
+*September 2025 – Present*  
 
 - Developed a full-stack fleet telemetry and battery health dashboard, leveraging Azure DevOps for CI/CD automation.
 - Created the backend in Python and Flask for data extraction from Snowflake using optimized SQL queries.
 - Designed an interactive frontend with React and Vite, incorporating live mapping and dynamic visualizations.
 - Simplified hardware-software interaction by developing a GUI that handles complex API calls for engineering teams.
 
-### **Engineering Data Analytics Intern**  
-**The Toro Company**  
-Bloomington, MN
-*May 2025 – September 2025*
+### **Engineering Data Analytics Intern**    
+**The Toro Company**    
+Bloomington, MN  
+*May 2025 – September 2025*  
 
 - Increased telematics data accuracy by 55% by developing automated Python tests for the machine-to-cloud data pipeline.
 - Developed tests using Pandas and Numpy to maintain data consistency across the pipeline and verify correct data publishing
@@ -54,10 +54,10 @@ on CAN trigger events.
 <img src="./img/toro.png" width="300"/>
 <br>
 
-### **Research Experiences for Undergraduates (REU)**  
-**National Science Foundation (NSF)**
-Detroit, MI
-*May 2024 – August 2024*
+### **Research Experiences for Undergraduates (REU)**    
+**National Science Foundation (NSF)**  
+Detroit, MI  
+*May 2024 – August 2024*  
 
 - Reduced vehicle idling time at intersections by 75% by developing adaptive speed-control algorithms.
 - Prototyped a low-cost roadside unit for vehicle-to-infrastructure communication of real-time traffic signal states.
