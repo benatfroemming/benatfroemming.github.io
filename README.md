@@ -23,6 +23,7 @@ My goal is to make a meaningful impact through my work, and I am passionate abou
 **Relevant Coursework:**  
 Software Engineering · Data Structures & Algorithms · Computer Systems & Databases · Project Management · Machine Learning · Robotics · Artificial Intelligence · Computer Vision · Natural Language Processing · Recommender Systems · Deep Learning · Data Analytics · Geocomputing
 
+<br><br>
 <img src="./umn.png" width="500"/>
 
 ---
