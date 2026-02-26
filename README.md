@@ -13,3 +13,7 @@ Test
 ```python
 print('Hello World')
 ```
+
+<section>
+  `GET /api/osm/map/data`
+</section>
