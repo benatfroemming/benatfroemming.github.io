@@ -50,7 +50,7 @@ Bloomington, MN
 on CAN trigger events.
 
 <br><br>
-<img src="./img/toro.png" width="500"/>
+<img src="./img/toro.png" width="400"/>
 
 ### **Research Experiences for Undergraduates (REU)**  
 **National Science Foundation (NSF)**  
@@ -62,7 +62,7 @@ Detroit, MI
 - Designed and deployed vision-based perception systems on electric vehicles using ROS, OpenCV, and Scikit-Learn.
 
 <br><br>
-<img src="./img/reu.png" width="500"/>
+<img src="./img/nsf.png" width="500"/>
 
 ---
 
