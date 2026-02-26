@@ -43,7 +43,7 @@ Bloomington, MN
 
 ### **Engineering Data Analytics Intern**  
 **The Toro Company**  
-Bloomington, MN  
+Bloomington, MN
 *May 2025 – September 2025*
 
 - Increased telematics data accuracy by 55% by developing automated Python tests for the machine-to-cloud data pipeline.
@@ -55,8 +55,8 @@ on CAN trigger events.
 <br>
 
 ### **Research Experiences for Undergraduates (REU)**  
-**National Science Foundation (NSF)**  
-Detroit, MI 
+**National Science Foundation (NSF)**
+Detroit, MI
 *May 2024 – August 2024*
 
 - Reduced vehicle idling time at intersections by 75% by developing adaptive speed-control algorithms.
