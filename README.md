@@ -1,4 +1,4 @@
-# Benat Froemming-Aldanondo
+# Beñat Froemming-Aldanondo
 
 ---
 
@@ -67,6 +67,26 @@ Detroit, MI
 <img src="./img/nsf.png" width="500"/>
 
 ---
+
+## Skills
+
+**Programming Languages:**  
+Python · Java · C/C++ · JavaScript · TypeScript  
+
+**Web & Software Development:**  
+React · Next.js · HTML · CSS · Git · GitHub · Azure DevOps · VS Code · PostgreSQL · Supabase · Snowflake  
+
+**Data Analytics & Engineering:**  
+R · SQL · Excel · Power BI · Jupyter Notebook · Pandas · GeoPandas · NumPy · Matplotlib  
+
+**AI & Machine Learning:**  
+Scikit-Learn · PyTorch · OpenCV · Hugging Face · LangChain · XGBoost  
+
+**Geospatial & Systems:**  
+ArcGIS · ROS · Docker · Linux  
+
+**Languages:**  
+English (Proficient) · Spanish (Proficient) · Basque (Proficient)
 
 
 
