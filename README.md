@@ -49,6 +49,9 @@ Bloomington, MN
 - Developed tests using Pandas and Numpy to maintain data consistency across the pipeline and verify correct data publishing
 on CAN trigger events.
 
+<br><br>
+<img src="./toro.png" width="500"/>
+
 ### **Research Experiences for Undergraduates (REU)**  
 **National Science Foundation (NSF)**  
 Detroit, MI 
@@ -57,6 +60,9 @@ Detroit, MI
 - Reduced vehicle idling time at intersections by 75% by developing adaptive speed-control algorithms.
 - Prototyped a low-cost roadside unit for vehicle-to-infrastructure communication of real-time traffic signal states.
 - Designed and deployed vision-based perception systems on electric vehicles using ROS, OpenCV, and Scikit-Learn.
+
+<br><br>
+<img src="./reu.png" width="500"/>
 
 ---
 
