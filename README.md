@@ -1,3 +1,7 @@
+---
+layout: default
+layout: default
+
 # Benat Froemming-Aldanondo
 ---
 Test
