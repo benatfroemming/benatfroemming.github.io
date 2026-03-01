@@ -69,21 +69,29 @@ Detroit, MI
 
 ---
 
+## Projects
+
+I have worked on many projects, through coursework, final projects, research, and personal projects. Here is my selection of my favorites projects:
+
+[Go to Projects Page →](./projects.md)
+
+---
+
 ## Skills
 
 **Programming Languages:**  
-Python · Java · C/C++ · JavaScript · TypeScript  
+Python · Java · C/C++ · JavaScript  
 
 **Web & Software Development:**  
 React · Next.js · HTML · CSS · Git · GitHub · Azure DevOps · VS Code · PostgreSQL · Supabase · Snowflake  
 
-**Data Analytics & Engineering:**  
+**Data Analytics:**  
 R · SQL · Excel · Power BI · Jupyter Notebook · Pandas · GeoPandas · NumPy · Matplotlib  
 
 **AI & Machine Learning:**  
-Scikit-Learn · PyTorch · OpenCV · Hugging Face · LangChain · XGBoost  
+Scikit-Learn · PyTorch · OpenCV · Hugging Face · LangChain  
 
-**Geospatial & Systems:**  
+**Other:**  
 ArcGIS · ROS · Docker · Linux  
 
 **Languages:**  
