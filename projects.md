@@ -9,6 +9,8 @@
 
 **Tech Stack:** React, Typescript, Visual Studio
 
+---
+
 ### **ChatOSM**  
 **Link:** [GitHub Repo](https://github.com/benatfroemming/ChatOSM)
 
@@ -18,6 +20,7 @@
 
 <img width="176" height="96" alt="image" src="https://github.com/user-attachments/assets/7a72f002-fb80-462f-a336-3096c643136e" />
 
+---
 
 ### **Live Metro Transit Tracker**
 
