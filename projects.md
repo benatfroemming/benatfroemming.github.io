@@ -1,6 +1,8 @@
+# Projects
+
 [← Back](./)
 
-# Projects
+---
 
 ### **Explicode**  
 **Link:** [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=Explicode.explicode)  
@@ -29,3 +31,5 @@
 **Description:** This web app is made to easily track Metro Transit trains and buses while using public transit. It displays live vehicle locations and arrival times for most routes in the Twin Cities Area. The data is fetched from the NextTrip API. This app is under development and I will likely add new features in the future.
 
 **Tech Stack:** React, JavaScript, Visual Studio, NexTrip API
+
+---
