@@ -5,7 +5,7 @@
 ---
 
 ### **Explicode**  
-**Link:** [Visual Studio Marketplace](https://explicode.com)  
+**Link:** [Website](https://explicode.com)  
 
 **Description:** *Explicode* is a project that aims to improve code documentation for developers. The idea is to allow writing rich Markdown documentation directly alongside your implementation inside of multiline comments. Since the documentation lives inside comments, it does not affect your code execution, works with most popular programming languages, and can be rendered as a markdown file.
 
