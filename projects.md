@@ -33,3 +33,13 @@
 **Tech Stack:** React, JavaScript, Visual Studio, NexTrip API
 
 ---
+
+### **Research on Exploration in Reinforcement Learning**
+
+**Link:** [GitHub Repo](https://github.com/benatfroemming/exploration)
+
+**Description:** This project is a modular PyTorch implementation of Deep Q-Network (DQN) for Atari environments via the Arcade Learning Environment (ALE), a testbed designed to make swapping exploration strategies easy. Based on DeepMind's original implementation Mnih et al. (2015). The DQN parameters stay fixed to compare different exploration strategies.
+
+**Tech Stack:** Python, PyTorch, Visual Studio, Google Colab, Gym
+
+---
