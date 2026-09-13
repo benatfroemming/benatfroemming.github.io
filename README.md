@@ -90,9 +90,10 @@ Detroit, MI
 ### **Other Employment** 
 
 - Student Assistant at the UMN Electrical and Computer Engineering Department · 5 yr
-- Undergraduate Research Assistant (UROP)
-- Lifeguard at the Hutchinson Aquatic Center
-- Landscaper at the Crow River Golf Course
+- Undergraduate Research Assistant (UROP) · 7 mos
+- Summer coding camp host and instructor · 2 mos
+- Lifeguard at the Hutchinson Aquatic Center · 3 mos
+- Landscaper at the Crow River Golf Course · 3 mos
 
 ## Projects
 
@@ -116,6 +117,8 @@ I've worked on many projects through coursework, research, and personal explorat
 <p align="left">
   <a href="https://linkedin.com/in/benatfroemming" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a> <a href="mailto:bfroemming03@gmail.com"><img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"></a> <a href="https://github.com/benatfroemming" target="_blank"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"></a>
 </p>
+
+<br></br>
 
 
 
