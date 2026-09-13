@@ -18,12 +18,12 @@ I'm a data and software engineer who aims to make a positive impact. I graduated
 
 ### **Master of Science in Computer Science**  
 **University of Minnesota – Twin Cities**  
-*September 2025 – May 2026*  
+*September 2025 - May 2026*  
 **GPA:** 4.0 / 4.0  
 
 ### **Bachelor of Science in Data Science**  
 **University of Minnesota – Twin Cities**  
-*September 2021 – May 2025*  
+*September 2021 - May 2025*  
 **GPA:** 3.75 / 4.0  
 
 **Relevant Coursework:** Software Engineering, Data Structures & Algorithms, Computer Systems & Databases, Project Management, Machine Learning, Robotics, Artificial Intelligence, Computer Vision, Natural Language Processing, Recommender Systems, Deep Learning, Data Analytics, Geocomputing
@@ -41,7 +41,7 @@ I'm a data and software engineer who aims to make a positive impact. I graduated
 ### **Geospatial Data Analyst II**  
 **Echospectra**  
 Remote, USA  
-*September 2026 – Present*  
+*September 2026 - Present*  
 
 Diagnosing and preventing wildfires through data.
 
@@ -53,7 +53,7 @@ Diagnosing and preventing wildfires through data.
 ### **Software Engineer**  
 **The Toro Company**  
 Bloomington, MN  
-*September 2025 – August 2026 · 1 yr*  
+*September 2025 - August 2026 · 1 yr*  
 
 - Built and deployed a full-stack web dashboard used by engineers to analyze and visualize telematics data from 30,000+ connected machines on an interactive map.
 - Reduced telematics device setup time across manufacturing workflows by developing API-driven provisioning tools.
@@ -63,7 +63,7 @@ Bloomington, MN
 ### **Engineering Data Analytics Intern**    
 **The Toro Company**    
 Bloomington, MN  
-*May 2025 – August 2025 · 4 mos*  
+*May 2025 - August 2025 · 4 mos*  
 
 - Improved telematics data accuracy by developing automated Python tests and visualizations to validate machine-to-cloud data pipelines before integration into customer-facing applications.
 
@@ -76,7 +76,7 @@ Bloomington, MN
 ### **Research Experiences for Undergraduates (REU)**    
 **National Science Foundation (NSF)**  
 Detroit, MI  
-*May 2024 – August 2024 · 4 mos*  
+*May 2024 - August 2024 · 4 mos*  
 
 - Reduced vehicle idling time at intersections by 75% compared to human drivers by developing adaptive speed-control algorithms and a low-cost roadside unit for real-time vehicle-to-infrastructure traffic signal communication.
 - Developed vision-based systems for safer lane following in electric vehicles, validated through on-vehicle and closed-course testing.
@@ -99,9 +99,9 @@ Detroit, MI
 
 I've worked on many projects through coursework, research, and personal exploration. Here's a selection of my favorites:
 
-- **[Explicode](https://github.com/benatfroemming/explicode)** — An open-source tool that turns scripts into readable docs by supporting Markdown in comments.
-- **[ChatOSM](https://github.com/benatfroemming/ChatOSM)** — A chatbot built on an open-weight model that turns natural language prompts into map visualizations by querying OpenStreetMap data.
-- **[Metro Transit Visualizer](https://benatfroemming.github.io/metrotransit/)** — A web app that visualizes live Twin Cities transit data using the NexTrip API.
+- **[Explicode](https://github.com/benatfroemming/explicode)**: An open-source tool that turns scripts into readable docs by supporting Markdown in comments.
+- **[ChatOSM](https://github.com/benatfroemming/ChatOSM)**: A chatbot built on an open-weight model that turns natural language prompts into map visualizations by querying OpenStreetMap data.
+- **[Metro Transit Visualizer](https://benatfroemming.github.io/metrotransit/)**: A web app that visualizes live Twin Cities transit data using the NexTrip API.
 
 ## Skills
 
@@ -118,7 +118,7 @@ I've worked on many projects through coursework, research, and personal explorat
   <a href="https://linkedin.com/in/benatfroemming" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a> <a href="mailto:bfroemming03@gmail.com"><img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"></a> <a href="https://github.com/benatfroemming" target="_blank"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"></a>
 </p>
 
-<br></br>
+<br>
 
 
 
