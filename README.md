@@ -38,7 +38,7 @@ I'm a data and software engineer who aims to make a positive impact. I graduated
 
 ## Professional Experience
 
-### **Geospatial Data Analyst II**  
+### **Spatial Data Analyst II**  
 **Echospectra**  
 Remote, USA  
 *September 2026 - Present*  
