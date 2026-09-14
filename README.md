@@ -95,6 +95,11 @@ Detroit, MI
 - Lifeguard at the Hutchinson Aquatic Center · 3 mos
 - Landscaper at the Crow River Golf Course · 3 mos
 
+### Volunteering
+
+- **WWOOF:** Helped on an organic farm in Sorrento, Italy, caring for animals, maintaining gardens, and supporting lemon production.
+- **Association for the Advancement of Artificial Intelligence (AAAI):** Assisted with the 2025 conference session technology and logistics.
+
 ## Projects
 
 I've worked on many projects through coursework, research, and personal exploration. Here's a selection of my favorites:
