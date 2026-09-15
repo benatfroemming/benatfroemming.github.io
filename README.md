@@ -12,7 +12,7 @@
 
 # Beñat Froemming-Aldanondo
 
-I'm a data and software engineer who aims to make a positive impact. I graduated with a Bachelor's in Data Science and Master's in Computer Science from the University of Minnesota - Twin Cities (May 2026). I'm currently starting a new role as a Geospatial Data Analyst II at Echospectra. I'm passionate about maps, geospatial data, and new technologies.
+I'm a data and software engineer who aims to make a positive impact. I graduated with a Bachelor's in Data Science and Master's in Computer Science from the University of Minnesota - Twin Cities (May 2026). I'm currently starting a new role as an Analyst II at Echospectra. I'm passionate about maps, geospatial data, and new technologies.
 
 ## Education
 
@@ -38,7 +38,7 @@ I'm a data and software engineer who aims to make a positive impact. I graduated
 
 ## Professional Experience
 
-### **Spatial Data Analyst II**  
+### **Analyst II**  
 **Echospectra**  
 Remote, USA  
 *September 2026 - Present*  
