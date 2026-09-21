@@ -2,6 +2,10 @@
   <img src="./img/profile.png" width="150" height="150" alt="Profile picture">
 </p>
 
+<h3 align="center">
+  <strong>Beñat Froemming-Aldanondo</strong>
+</h3>
+
 <p align="center">
   <a href="#education">Education</a> ·
   <a href="#professional-experience">Professional Experience</a> ·
@@ -10,7 +14,7 @@
   <a href="#contact">Contact</a>
 </p>
 
-# Beñat Froemming-Aldanondo
+## Introduction
 
 I'm a data and software engineer who aims to make a positive impact. I graduated with a Bachelor's in Data Science and Master's in Computer Science from the University of Minnesota - Twin Cities (May 2026). I'm currently starting a new role as an Analyst II at Echospectra. I'm passionate about maps, geospatial data, and new technologies.
 
