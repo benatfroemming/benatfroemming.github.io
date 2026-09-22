@@ -47,7 +47,7 @@ I'm a data and software engineer who aims to make a positive impact. I graduated
 Remote, USA  
 *September 2026 - Present*  
 
-Diagnosing and preventing wildfires through data.
+Data-driven wildfire investigation.
 
 <br>
 <img src="./img/echospectra.webp" width="200"/>
